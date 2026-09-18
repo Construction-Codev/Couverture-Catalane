@@ -18,3 +18,39 @@ body {
   font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
   padding-top: 6.5rem; 
 }
+
+body[data-mobile-menu-open="true"] #mobile-cta {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(100%);
+}
+
+#mobile-cta {
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease,
+    visibility 180ms ease;
+}
+
+#mobile-cta {
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease,
+    visibility 180ms ease;
+}
+
+/* Cache le CTA lorsque le menu hamburger est ouvert */
+body[data-mobile-menu-open="true"] #mobile-cta,
+
+/* Cache le CTA lorsque le footer entre dans l'écran */
+#mobile-cta[data-footer-visible="true"] {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(100%);
+}
+
+html {
+  scroll-behavior: smooth;
+}
