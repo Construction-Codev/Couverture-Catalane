@@ -50,11 +50,8 @@ export default function CouverturePage() {
       />
 
       <Breadcrumb
-        items={[
-          {
-            label: "Travaux de couverture",
-          },
-        ]}
+        items={[{ label: "Couverture" }]}
+        currentPath="/couverture"
       />
 
       <ServiceContent

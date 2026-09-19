@@ -22,9 +22,14 @@ const services = [
   { name: "Charpente", href: "/charpente" },
 ];
 
-const informations = [
+const discover = [
+  { name: "Réalisations", href: "/realisations" },
+  { name: "Conseils toiture", href: "/conseils" },
   { name: "À propos", href: "/a-propos" },
   { name: "Contact", href: "/contact" },
+];
+
+const legal = [
   { name: "Mentions légales", href: "/mentions-legales" },
   { name: "Conditions générales", href: "/conditions-generales" },
   {
@@ -143,14 +148,14 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* INFORMATIONS */}
+          {/* DÉCOUVRIR */}
           <div>
             <h2 className="text-sm font-black uppercase tracking-[0.16em] text-white">
-              Informations
+              Découvrir
             </h2>
 
             <ul className="mt-6 space-y-3">
-              {informations.map((item) => (
+              {discover.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
@@ -232,30 +237,44 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* =====================================================
+     {/* =====================================================
           BAS DU FOOTER
       ====================================================== */}
       <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 px-6 py-7 text-center sm:px-8 md:flex-row md:text-left lg:px-12">
-          <p className="text-xs font-semibold leading-relaxed text-slate-400">
-            © {currentYear}{" "}
-            <span className="font-extrabold text-white">
-              Couverture Catalane
-            </span>
-            . Tous droits réservés.
-          </p>
+        <div className="mx-auto max-w-7xl px-6 py-7 sm:px-8 lg:px-12">
+          <div className="flex flex-col items-center justify-between gap-5 md:flex-row">
+            <p className="text-center text-xs font-semibold leading-relaxed text-slate-400 md:text-left">
+              © {currentYear}{" "}
+              <span className="font-extrabold text-white">
+                Couverture Catalane
+              </span>
+              . Tous droits réservés.
+            </p>
 
-          <a
-            href="https://code-v.fr"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-bold text-slate-300 transition hover:border-white/20 hover:bg-white/10 hover:text-white"
-          >
-            Réalisé par
-            <span className="font-black text-orange-400 transition group-hover:text-orange-300">
-              Codev
-            </span>
-          </a>
+            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
+              {legal.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="text-xs font-semibold text-slate-400 transition hover:text-orange-400"
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+
+            <a
+              href="https://code-v.fr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-bold text-slate-300 transition hover:border-white/20 hover:bg-white/10 hover:text-white"
+            >
+              Réalisé par
+              <span className="font-black text-orange-400 transition group-hover:text-orange-300">
+                Codev
+              </span>
+            </a>
+          </div>
         </div>
       </div>
     </footer>

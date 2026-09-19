@@ -58,12 +58,10 @@ export default function ZingueriePage() {
       />
 
       <Breadcrumb
-        items={[
-          {
-            label: "Zinguerie et gouttières",
-          },
-        ]}
+        items={[{ label: "Zinguerie" }]}
+        currentPath="/zinguerie"
       />
+
 
       <ServiceContent
         eyebrow="Zinguerie"

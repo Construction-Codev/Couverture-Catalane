@@ -58,11 +58,8 @@ export default function ReparationsPage() {
       />
 
       <Breadcrumb
-        items={[
-          {
-            label: "Réparation de toiture",
-          },
-        ]}
+        items={[{ label: "Réparations" }]}
+        currentPath="/reparations"
       />
 
       <ServiceContent

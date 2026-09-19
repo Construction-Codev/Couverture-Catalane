@@ -60,11 +60,8 @@ export default function FuitesPage() {
       />
 
       <Breadcrumb
-        items={[
-          {
-            label: "Fuites de toiture",
-          },
-        ]}
+        items={[{ label: "Fuites" }]}
+        currentPath="/fuites"
       />
 
       <ServiceContent

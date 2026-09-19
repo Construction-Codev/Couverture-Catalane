@@ -62,11 +62,8 @@ export default function NettoyagePage() {
 
       {/* FIL D'ARIANE */}
       <Breadcrumb
-        items={[
-          {
-            label: "Nettoyage de toiture",
-          },
-        ]}
+        items={[{ label: "Nettoyage" }]}
+        currentPath="/nettoyage"
       />
 
       {/* PRÉSENTATION */}

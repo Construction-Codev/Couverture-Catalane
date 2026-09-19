@@ -8,11 +8,15 @@ type BreadcrumbItem = {
 
 type BreadcrumbProps = {
   items: BreadcrumbItem[];
+  currentPath?: string;
 };
 
 const BASE_URL = "https://www.couverture-catalane.fr";
 
-export default function Breadcrumb({ items }: BreadcrumbProps) {
+export default function Breadcrumb({
+  items,
+  currentPath,
+}: BreadcrumbProps) {
   const breadcrumbItems = [
     {
       label: "Accueil",
@@ -24,14 +28,23 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: breadcrumbItems.map((item, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: item.label,
-      item: item.href
-        ? `${BASE_URL}${item.href}`
-        : undefined,
-    })),
+    itemListElement: breadcrumbItems.map((item, index) => {
+      const isLast = index === breadcrumbItems.length - 1;
+
+      const href =
+        item.href || (isLast ? currentPath : undefined);
+
+      return {
+        "@type": "ListItem",
+        position: index + 1,
+        name: item.label,
+        ...(href
+          ? {
+              item: `${BASE_URL}${href}`,
+            }
+          : {}),
+      };
+    }),
   };
 
   return (
@@ -87,7 +100,10 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+          __html: JSON.stringify(jsonLd).replace(
+            /</g,
+            "\\u003c"
+          ),
         }}
       />
     </>

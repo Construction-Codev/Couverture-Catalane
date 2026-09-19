@@ -60,11 +60,8 @@ export default function CharpentePage() {
 
       {/* FIL D'ARIANE */}
       <Breadcrumb
-        items={[
-          {
-            label: "Travaux de charpente",
-          },
-        ]}
+        items={[{ label: "Charpente" }]}
+        currentPath="/charpente"
       />
 
       {/* INTRODUCTION */}

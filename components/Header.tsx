@@ -201,6 +201,20 @@ const trackQuote = (source: string) => {
           </div>
 
           <Link
+            href="/realisations"
+            className="rounded-lg px-3 py-2 text-sm font-bold text-slate-700 transition hover:bg-slate-50 hover:text-orange-600"
+          >
+            Réalisations
+          </Link>
+
+          <Link
+            href="/conseils"
+            className="rounded-lg px-3 py-2 text-sm font-bold text-slate-700 transition hover:bg-slate-50 hover:text-orange-600"
+          >
+            Conseils
+          </Link>
+
+          <Link
             href="/a-propos"
             className="rounded-lg px-3 py-2 text-sm font-bold text-slate-700 transition hover:bg-slate-50 hover:text-orange-600"
           >
@@ -328,6 +342,24 @@ const trackQuote = (source: string) => {
               </div>
 
               <div className="my-5 border-t border-slate-200" />
+
+              <Link
+                href="/realisations"
+                onClick={closeMenus}
+                className="block rounded-xl px-4 py-3 text-lg font-extrabold text-slate-950 transition active:bg-slate-50 active:text-orange-600"
+              >
+                Réalisations
+              </Link>
+
+              <Link
+                href="/conseils"
+                onClick={closeMenus}
+                className="block rounded-xl px-4 py-3 text-lg font-extrabold text-slate-950 transition active:bg-slate-50 active:text-orange-600"
+              >
+                Conseils
+              </Link>
+
+              <div className="my-3 border-t border-slate-200" />
 
               <Link
                 href="/a-propos"
