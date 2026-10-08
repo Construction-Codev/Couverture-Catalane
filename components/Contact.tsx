@@ -446,7 +446,7 @@ export default function Contact() {
                     </span>
                   </label>
 
-                  <span className="text-xs font-semibold text-slate-400">
+                  <span className="text-xs font-semibold text-slate-500">
                     {formData.message.length} caractères
                   </span>
                 </div>

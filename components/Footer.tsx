@@ -51,7 +51,7 @@ export default function Footer() {
         <div className="mx-auto max-w-7xl px-6 py-14 sm:px-8 lg:px-12 lg:py-16">
           <div className="flex flex-col gap-8 rounded-3xl bg-orange-600 p-7 shadow-2xl shadow-black/10 sm:p-9 lg:flex-row lg:items-center lg:justify-between lg:p-10">
             <div className="max-w-2xl">
-              <p className="text-xs font-black uppercase tracking-[0.18em] text-white/80">
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-white">
                 Un projet de toiture ?
               </p>
 
@@ -71,7 +71,7 @@ export default function Footer() {
                 phone="+33662125611"
                 source="footer"
                 ariaLabel="Appeler Couverture Catalane au 06 62 12 56 11"
-                className="inline-flex min-h-14 items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 py-3 font-extrabold text-white transition hover:bg-white/20"
+                className="inline-flex min-h-14 items-center justify-center gap-2 rounded-full border border-white/40 px-6 py-3 font-extrabold text-white transition hover:bg-white/10"
               >
                 <Phone size={19} aria-hidden="true" />
                 06 62 12 56 11
@@ -179,7 +179,6 @@ export default function Footer() {
               <TrackedPhone
                 phone="+33662125611"
                 source="footer_contact"
-                ariaLabel="Appeler Couverture Catalane au 06 62 12 56 11"
                 className="group flex items-start gap-3"
               >
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/5 text-orange-400 transition group-hover:bg-orange-600 group-hover:text-white">
@@ -187,7 +186,7 @@ export default function Footer() {
                 </span>
 
                 <span>
-                  <span className="block text-xs font-bold uppercase tracking-wide text-slate-500">
+                  <span className="block text-xs font-bold uppercase tracking-wide text-slate-400">
                     Téléphone
                   </span>
 
@@ -206,7 +205,7 @@ export default function Footer() {
                 </span>
 
                 <span className="min-w-0">
-                  <span className="block text-xs font-bold uppercase tracking-wide text-slate-500">
+                  <span className="block text-xs font-bold uppercase tracking-wide text-slate-400">
                     E-mail
                   </span>
 
@@ -222,7 +221,7 @@ export default function Footer() {
                 </span>
 
                 <span>
-                  <span className="block text-xs font-bold uppercase tracking-wide text-slate-500">
+                  <span className="block text-xs font-bold uppercase tracking-wide text-slate-400">
                     Adresse
                   </span>
 
