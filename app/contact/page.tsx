@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 
+import { pageOpenGraph } from "@/lib/seo";
+
 import Contact from "@/components/Contact";
 
 export const metadata: Metadata = {
@@ -12,13 +14,13 @@ export const metadata: Metadata = {
     canonical: "/contact",
   },
 
-  openGraph: {
+  openGraph: pageOpenGraph({
     title: "Contact & devis toiture à Perpignan | Couverture Catalane",
     description:
       "Contactez Couverture Catalane pour vos travaux de toiture à Perpignan et dans les Pyrénées-Orientales.",
     url: "/contact",
     type: "website",
-  },
+  }),
 
   twitter: {
     card: "summary_large_image",

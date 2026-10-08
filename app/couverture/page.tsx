@@ -1,13 +1,17 @@
 import type { Metadata } from "next";
 
+import { pageOpenGraph, serviceJsonLd } from "@/lib/seo";
+
 import Breadcrumb from "@/components/Breadcrumb";
+import JsonLd from "@/components/JsonLd";
 import SectionBanner from "@/components/SectionBanner";
 import ServiceContent from "@/components/ServiceContent";
 import ServiceGallery from "@/components/ServiceGallery";
 import FAQ from "@/components/FAQ";
+import RelatedContent from "@/components/RelatedContent";
 
 export const metadata: Metadata = {
-  title: "Travaux de couverture à Perpignan",
+  title: "Couverture et rénovation de toiture à Perpignan",
   description:
     "Travaux de couverture à Perpignan et dans les Pyrénées-Orientales : rénovation de toiture, remplacement de tuiles, réparation et étanchéité.",
 
@@ -15,37 +19,46 @@ export const metadata: Metadata = {
     canonical: "/couverture",
   },
 
-  openGraph: {
-    title: "Travaux de couverture à Perpignan | Couverture Catalane",
+  openGraph: pageOpenGraph({
+    title: "Couverture et rénovation de toiture à Perpignan | Couverture Catalane",
     description:
       "Couverture, rénovation et réparation de toiture à Perpignan et dans les Pyrénées-Orientales.",
     url: "/couverture",
     type: "website",
-  },
+  }),
 };
 
 export default function CouverturePage() {
   const images = [
     {
-      image: "/couverture.png",
+      image: "/couverture.jpg",
       alt: "Travaux de couverture sur une toiture",
     },
     {
-      image: "/couverture2.png",
+      image: "/couverture2.jpg",
       alt: "Travaux sur une toiture en tuiles",
     },
     {
-      image: "/couverture3.png",
+      image: "/couverture3.jpg",
       alt: "Rénovation d'une couverture de toiture",
     },
   ];
 
   return (
     <>
+      <JsonLd
+        data={serviceJsonLd({
+          name: "Couverture et rénovation de toiture",
+          description:
+            "Travaux de couverture et rénovation de toiture à Perpignan et dans les Pyrénées-Orientales : remplacement de tuiles, remise en état et étanchéité de la couverture.",
+          path: "/couverture",
+          serviceType: "Couverture et rénovation de toiture",
+        })}
+      />
       <SectionBanner
-        title="Travaux de couverture à Perpignan"
+        title="Couverture et rénovation de toiture à Perpignan"
         subtitle="Rénovation, réparation et travaux de toiture dans les Pyrénées-Orientales"
-        backgroundImage="/couverture.png"
+        backgroundImage="/couverture.jpg"
         imageAlt="Travaux de couverture sur une toiture dans les Pyrénées-Orientales"
       />
 
@@ -135,6 +148,8 @@ export default function CouverturePage() {
           },
         ]}
       />
+      <RelatedContent service="/couverture" serviceName="Couverture" />
+
       <FAQ
   title="Questions fréquentes sur les travaux de couverture"
   intro="Les principales questions à se poser avant des travaux de toiture à Perpignan ou dans les Pyrénées-Orientales."

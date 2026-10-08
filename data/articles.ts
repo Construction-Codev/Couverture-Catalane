@@ -9,7 +9,7 @@ export const articles: Article[] = [
     category: "Urgence toiture",
     publishedAt: "2026-09-19",
     readingTime: "7 min",
-    image: "/articles/tuiles.png",
+    image: "/articles/tuiles.jpg",
     intro: [
       "Après une tempête ou un épisode de vent violent, les dégâts sur une toiture ne sont pas toujours immédiatement visibles. Quelques tuiles peuvent avoir été déplacées, un élément de zinguerie peut avoir souffert ou une infiltration peut apparaître plusieurs heures plus tard.",
       "Dans les Pyrénées-Orientales, où les épisodes venteux peuvent être importants, savoir comment réagir permet surtout d’éviter qu’un dommage localisé ne provoque des infiltrations plus importantes.",
@@ -144,12 +144,13 @@ export const articles: Article[] = [
   {
   slug: "fuite-toiture-comment-trouver-origine",
   title: "Fuite de toiture : comment trouver l’origine et que faire ?",
+  seoTitle: "Fuite de toiture : comment trouver l’origine ?",
   description:
     "Tache au plafond, gouttes dans les combles ou infiltration après la pluie : comprendre l’origine possible d’une fuite de toiture et savoir comment réagir.",
   category: "Fuite de toiture",
   publishedAt: "2026-09-19",
   readingTime: "8 min",
-  image: "/articles/fuites.png",
+  image: "/articles/fuites.jpg",
   intro: [
     "Une tache d’humidité au plafond ne signifie pas forcément que la fuite se trouve juste au-dessus. Sur une toiture, l’eau peut pénétrer à un endroit puis circuler le long d’un élément de charpente ou d’une autre partie du bâtiment avant de devenir visible plusieurs mètres plus loin.",
     "C’est ce qui rend certaines infiltrations difficiles à comprendre. Remplacer une tuile située approximativement au-dessus d’une auréole ne suffit pas toujours : il faut rechercher le chemin emprunté par l’eau et identifier son véritable point d’entrée.",
@@ -265,12 +266,13 @@ export const articles: Article[] = [
 {
   slug: "quand-demousser-toiture",
   title: "Quand faut-il démousser une toiture et comment savoir si elle en a besoin ?",
+  seoTitle: "Quand faut-il démousser sa toiture ?",
   description:
     "Mousses, lichens et salissures : découvrez quand envisager le démoussage d’une toiture, les signes à observer et les précautions à prendre.",
   category: "Entretien toiture",
   publishedAt: "2026-09-19",
   readingTime: "8 min",
-  image: "/articles/demoussage.png",
+  image: "/articles/demoussage.jpg",
   intro: [
     "La présence de quelques traces vertes sur une toiture ne signifie pas nécessairement qu’il faut intervenir immédiatement. À l’inverse, attendre que la couverture soit fortement colonisée avant de s’en préoccuper n’est pas toujours souhaitable.",
     "Le besoin de nettoyage dépend notamment de l’environnement de la maison, de l’exposition de la toiture, de son matériau et de son état. Deux maisons voisines peuvent donc présenter des niveaux d’encrassement très différents.",
@@ -376,12 +378,13 @@ export const articles: Article[] = [
 {
   slug: "hydrofuge-toiture-utilite-quand-appliquer",
   title: "Hydrofuge de toiture : à quoi sert-il et quand l’appliquer ?",
+  seoTitle: "Hydrofuge de toiture : utilité et quand l’appliquer",
   description:
     "Comprendre le rôle d’un traitement hydrofuge de toiture, ses limites et les situations dans lesquelles son application peut être envisagée.",
   category: "Entretien toiture",
   publishedAt: "2026-09-19",
   readingTime: "7 min",
-  image: "/articles/hydrofuge.png",
+  image: "/articles/hydrofuge.jpg",
   intro: [
     "L’hydrofuge est souvent présenté comme une solution capable de rendre une toiture « comme neuve ». Cette formulation est trompeuse : un traitement hydrofuge ne remplace ni une tuile cassée, ni une réparation de fuite, ni une réfection nécessaire.",
     "Son rôle est différent. Lorsqu’il est adapté au support et appliqué sur une couverture en état compatible avec le traitement, il intervient dans une démarche d’entretien de la toiture.",
@@ -481,12 +484,13 @@ export const articles: Article[] = [
 {
   slug: "reparer-ou-refaire-toiture-comment-decider",
   title: "Réparer ou refaire une toiture : comment savoir quels travaux sont nécessaires ?",
+  seoTitle: "Réparer ou refaire sa toiture : comment décider ?",
   description:
     "Quelques tuiles à remplacer ou une réfection plus importante ? Les critères à examiner avant de décider quels travaux réaliser sur une toiture.",
   category: "Réfection toiture",
   publishedAt: "2026-09-19",
   readingTime: "9 min",
-  image: "/articles/reparer.png",
+  image: "/articles/reparer.jpg",
   intro: [
     "Lorsqu’une toiture commence à présenter des problèmes, une question revient rapidement : faut-il simplement réparer la zone concernée ou envisager une réfection plus importante ?",
     "Il n’existe pas de réponse valable uniquement à partir de l’âge du bâtiment. Deux toitures du même âge peuvent être dans des états très différents selon leur matériau, leur entretien, leur exposition et les travaux déjà réalisés.",
@@ -598,12 +602,13 @@ export const articles: Article[] = [
 {
   slug: "tuiles-cassees-deplacees-envolees-que-faire",
   title: "Tuiles cassées, déplacées ou envolées : quels risques et que faire ?",
+  seoTitle: "Tuiles cassées ou envolées : risques et que faire ?",
   description:
     "Une ou plusieurs tuiles sont cassées, déplacées ou tombées après du vent ? Comprendre les risques et savoir quand une réparation de toiture est nécessaire.",
   category: "Réparation toiture",
   publishedAt: "2026-09-19",
   readingTime: "7 min",
-  image: "/articles/casser.png",
+  image: "/articles/casser.jpg",
   intro: [
     "Une tuile au sol après un épisode venteux est un signe évident. Une tuile simplement déplacée est beaucoup plus difficile à repérer depuis le jardin. Dans les deux cas, une partie de la couverture peut ne plus remplir correctement son rôle.",
     "Cela ne signifie pas pour autant que toute la toiture doit être refaite. Lorsque le dommage est limité et que le reste de la couverture est en état, une intervention localisée peut être envisageable.",

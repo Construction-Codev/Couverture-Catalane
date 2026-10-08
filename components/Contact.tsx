@@ -1,6 +1,8 @@
 "use client";
 
-import { track } from "@vercel/analytics";
+
+import { TrackedPhone } from "@/components/TrackedCTA";
+import { trackFormSuccess } from "@/lib/conversions";
 
 import {
   AlertCircle,
@@ -14,6 +16,8 @@ import {
 import {
   ChangeEvent,
   FormEvent,
+  useEffect,
+  useRef,
   useState,
 } from "react";
 
@@ -42,6 +46,15 @@ export default function Contact() {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
+  // Anti-spam invisible : champ piège (honeypot) et horodatage
+  // du premier affichage, vérifiés côté serveur.
+  const [website, setWebsite] = useState("");
+  const startedAtRef = useRef(0);
+
+  useEffect(() => {
+    startedAtRef.current = Date.now();
+  }, []);
 
   const handleChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -119,6 +132,10 @@ export default function Contact() {
           email: formData.email.trim(),
           phone: formData.phone.trim(),
           message: formData.message.trim(),
+          website,
+          elapsedMs: startedAtRef.current
+            ? Date.now() - startedAtRef.current
+            : 0,
         }),
       });
 
@@ -140,11 +157,9 @@ export default function Contact() {
 
       setSuccess(true);
 
-      track("devis_envoye", {
-        source: "contact",
-      });
+      trackFormSuccess("contact");
 
-setFormData(initialFormData);
+      setFormData(initialFormData);
     } catch {
       setError(
         "Impossible d'envoyer votre demande pour le moment. Vous pouvez nous appeler au 06 62 12 56 11."
@@ -197,9 +212,10 @@ setFormData(initialFormData);
 
               <div className="mt-8 space-y-4">
                 {/* TÉLÉPHONE */}
-                <a
-                  href="tel:+33662125611"
-                  aria-label="Appeler Couverture Catalane au 06 62 12 56 11"
+                <TrackedPhone
+                  phone="+33662125611"
+                  source="contact_page"
+                  ariaLabel="Appeler Couverture Catalane au 06 62 12 56 11"
                   className="group flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-orange-200 hover:shadow-md"
                 >
                   <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-orange-50 text-orange-600 transition group-hover:bg-orange-600 group-hover:text-white">
@@ -207,7 +223,7 @@ setFormData(initialFormData);
                   </span>
 
                   <span>
-                    <span className="block text-xs font-black uppercase tracking-[0.12em] text-slate-400">
+                    <span className="block text-xs font-black uppercase tracking-[0.12em] text-slate-600">
                       Téléphone
                     </span>
 
@@ -215,7 +231,7 @@ setFormData(initialFormData);
                       06 62 12 56 11
                     </span>
                   </span>
-                </a>
+                </TrackedPhone>
 
                 {/* EMAIL */}
                 <a
@@ -227,7 +243,7 @@ setFormData(initialFormData);
                   </span>
 
                   <span className="min-w-0">
-                    <span className="block text-xs font-black uppercase tracking-[0.12em] text-slate-400">
+                    <span className="block text-xs font-black uppercase tracking-[0.12em] text-slate-600">
                       E-mail
                     </span>
 
@@ -244,7 +260,7 @@ setFormData(initialFormData);
                   </span>
 
                   <span>
-                    <span className="block text-xs font-black uppercase tracking-[0.12em] text-slate-400">
+                    <span className="block text-xs font-black uppercase tracking-[0.12em] text-slate-600">
                       Zone d&apos;intervention
                     </span>
 
@@ -301,6 +317,25 @@ setFormData(initialFormData);
               className="space-y-6"
               noValidate
             >
+              {/* ANTI-SPAM : champ invisible, laissé vide par les visiteurs */}
+              <div
+                aria-hidden="true"
+                className="absolute -left-[10000px] top-auto h-px w-px overflow-hidden"
+              >
+                <label htmlFor="contact-website">
+                  Ne pas remplir ce champ
+                </label>
+                <input
+                  id="contact-website"
+                  type="text"
+                  name="website"
+                  value={website}
+                  onChange={(event) => setWebsite(event.target.value)}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </div>
+
               {/* NOM + TÉLÉPHONE */}
               <div className="grid gap-5 sm:grid-cols-2">
                 <div>

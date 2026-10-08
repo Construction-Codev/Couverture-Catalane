@@ -233,7 +233,7 @@ export default function Carousel({ items }: CarouselProps) {
             flex
             -translate-x-1/2
             items-center
-            gap-2
+            gap-0.5
             rounded-full
             bg-slate-950/55
             px-3
@@ -252,21 +252,37 @@ export default function Carousel({ items }: CarouselProps) {
                 onClick={() => goToSlide(index)}
                 aria-label={`Afficher l'image ${index + 1} sur ${length}`}
                 aria-current={isActive ? "true" : undefined}
-                className={`
-                  h-2.5
+                className="
+                  group/dot
+                  -my-2
+                  flex
+                  h-6
+                  min-w-6
+                  items-center
+                  justify-center
                   rounded-full
-                  transition-all
-                  duration-300
                   focus-visible:outline-none
                   focus-visible:ring-2
                   focus-visible:ring-orange-400
-                  ${
-                    isActive
-                      ? "w-6 bg-orange-500"
-                      : "w-2.5 bg-white/60 hover:bg-white"
-                  }
-                `}
-              />
+                "
+              >
+                {/* Zone cliquable de 24 px, pastille visuelle inchangée */}
+                <span
+                  aria-hidden="true"
+                  className={`
+                    block
+                    h-2.5
+                    rounded-full
+                    transition-all
+                    duration-300
+                    ${
+                      isActive
+                        ? "w-6 bg-orange-500"
+                        : "w-2.5 bg-white/60 group-hover/dot:bg-white"
+                    }
+                  `}
+                />
+              </button>
             );
           })}
         </div>

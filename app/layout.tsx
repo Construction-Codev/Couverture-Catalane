@@ -1,22 +1,18 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Geist } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MobileCTA from "@/components/MobileCTA";
+import CookieBanner from "@/components/CookieBanner";
+import GoogleAdsTag from "@/components/GoogleAdsTag";
+import JsonLd from "@/components/JsonLd";
+import { DEFAULT_OG_IMAGE, SITE_URL } from "@/lib/seo";
+import realisations from "@/data/realisations.json";
 
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const SITE_URL = "https://www.couverture-catalane.fr";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -48,6 +44,7 @@ export const metadata: Metadata = {
     title: "Couverture Catalane | Couvreur à Perpignan et dans le 66",
     description:
       "Travaux de couverture, réparation de toiture, recherche de fuite, zinguerie, nettoyage et charpente à Perpignan et dans les Pyrénées-Orientales.",
+    images: [DEFAULT_OG_IMAGE],
   },
 
   twitter: {
@@ -55,6 +52,7 @@ export const metadata: Metadata = {
     title: "Couverture Catalane | Couvreur à Perpignan et dans le 66",
     description:
       "Travaux de couverture, réparation, fuite, zinguerie, nettoyage et charpente à Perpignan et dans les Pyrénées-Orientales.",
+    images: [DEFAULT_OG_IMAGE.url],
   },
 
   robots: {
@@ -93,10 +91,23 @@ const localBusinessJsonLd = {
     addressCountry: "FR",
   },
 
-  areaServed: {
-    "@type": "AdministrativeArea",
-    name: "Pyrénées-Orientales",
-  },
+  logo: `${SITE_URL}/logo1.png`,
+
+  image: `${SITE_URL}${DEFAULT_OG_IMAGE.url}`,
+
+  // Département + communes où des chantiers ont été réalisés
+  areaServed: [
+    {
+      "@type": "AdministrativeArea",
+      name: "Pyrénées-Orientales",
+    },
+    ...Array.from(new Set(realisations.map((item) => item.city))).map(
+      (city) => ({
+        "@type": "City",
+        name: city,
+      })
+    ),
+  ],
 };
 
 export default function RootLayout({
@@ -106,26 +117,29 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body className={geistSans.variable}>
+      <body>
+        <a
+          href="#contenu"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-white focus:px-5 focus:py-3 focus:font-extrabold focus:text-slate-950 focus:shadow-xl"
+        >
+          Aller au contenu
+        </a>
+
         <Header />
 
-        {children}
+        <div id="contenu" tabIndex={-1} className="outline-none">
+          {children}
+        </div>
 
         <Footer />
         <MobileCTA />
+        <CookieBanner />
 
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(localBusinessJsonLd).replace(
-              /</g,
-              "\\u003c"
-            ),
-          }}
-        />
+        <JsonLd data={localBusinessJsonLd} />
 
         <Analytics />
         <SpeedInsights />
+        <GoogleAdsTag />
       </body>
     </html>
   );

@@ -1,13 +1,17 @@
 import type { Metadata } from "next";
 
+import { pageOpenGraph, serviceJsonLd } from "@/lib/seo";
+
 import Breadcrumb from "@/components/Breadcrumb";
+import JsonLd from "@/components/JsonLd";
 import FAQ from "@/components/FAQ";
+import RelatedContent from "@/components/RelatedContent";
 import SectionBanner from "@/components/SectionBanner";
 import ServiceContent from "@/components/ServiceContent";
 import ServiceGallery from "@/components/ServiceGallery";
 
 export const metadata: Metadata = {
-  title: "Réparation de fuite de toiture à Perpignan",
+  title: "Recherche de fuite de toiture à Perpignan",
 
   description:
     "Recherche et réparation de fuites de toiture à Perpignan et dans les Pyrénées-Orientales : infiltrations, tuiles endommagées, étanchéité et zinguerie.",
@@ -16,19 +20,19 @@ export const metadata: Metadata = {
     canonical: "/fuites",
   },
 
-  openGraph: {
+  openGraph: pageOpenGraph({
     title:
-      "Réparation de fuite de toiture à Perpignan | Couverture Catalane",
+      "Recherche de fuite de toiture à Perpignan | Couverture Catalane",
     description:
       "Recherche de l'origine des infiltrations et réparation de fuites de toiture à Perpignan et dans les Pyrénées-Orientales.",
     url: "/fuites",
     type: "website",
-  },
+  }),
 
   twitter: {
     card: "summary_large_image",
     title:
-      "Réparation de fuite de toiture à Perpignan | Couverture Catalane",
+      "Recherche de fuite de toiture à Perpignan | Couverture Catalane",
     description:
       "Recherche et réparation de fuites et infiltrations de toiture à Perpignan et dans les Pyrénées-Orientales.",
   },
@@ -37,25 +41,34 @@ export const metadata: Metadata = {
 export default function FuitesPage() {
   const images = [
     {
-      image: "/fuites2.png",
+      image: "/fuites2.jpg",
       alt: "Recherche d'une fuite sur une toiture",
     },
     {
-      image: "/fuites.png",
+      image: "/fuites.jpg",
       alt: "Intervention sur une toiture présentant une infiltration",
     },
     {
-      image: "/fuites3.png",
+      image: "/fuites3.jpg",
       alt: "Travaux de réparation sur une toiture",
     },
   ];
 
   return (
     <>
+      <JsonLd
+        data={serviceJsonLd({
+          name: "Recherche et réparation de fuite de toiture",
+          description:
+            "Recherche de l’origine des fuites et infiltrations de toiture et réparation adaptée à Perpignan et dans les Pyrénées-Orientales.",
+          path: "/fuites",
+          serviceType: "Recherche de fuite de toiture",
+        })}
+      />
       <SectionBanner
-        title="Réparation de fuite de toiture à Perpignan"
+        title="Recherche et réparation de fuite de toiture à Perpignan"
         subtitle="Recherche de l'origine des infiltrations et réparation de toiture dans les Pyrénées-Orientales"
-        backgroundImage="/fuites.png"
+        backgroundImage="/fuites.jpg"
         imageAlt="Intervention sur une toiture présentant une fuite"
       />
 
@@ -209,6 +222,8 @@ export default function FuitesPage() {
           },
         ]}
       />
+
+      <RelatedContent service="/fuites" serviceName="Fuites de toiture" />
 
       <FAQ
         title="Questions fréquentes sur les fuites de toiture"

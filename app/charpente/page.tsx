@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 
+import { pageOpenGraph, serviceJsonLd } from "@/lib/seo";
+
 import Breadcrumb from "@/components/Breadcrumb";
+import JsonLd from "@/components/JsonLd";
 import FAQ from "@/components/FAQ";
+import RelatedContent from "@/components/RelatedContent";
 import SectionBanner from "@/components/SectionBanner";
 import ServiceContent from "@/components/ServiceContent";
 import ServiceGallery from "@/components/ServiceGallery";
@@ -16,13 +20,13 @@ export const metadata: Metadata = {
     canonical: "/charpente",
   },
 
-  openGraph: {
+  openGraph: pageOpenGraph({
     title: "Travaux de charpente à Perpignan | Couverture Catalane",
     description:
       "Rénovation, réparation et travaux de charpente à Perpignan et dans les Pyrénées-Orientales.",
     url: "/charpente",
     type: "website",
-  },
+  }),
 
   twitter: {
     card: "summary_large_image",
@@ -35,26 +39,35 @@ export const metadata: Metadata = {
 export default function CharpentePage() {
   const images = [
     {
-      image: "/charpente.png",
+      image: "/charpente.jpg",
       alt: "Structure d'une charpente de toiture",
     },
     {
-      image: "/charpente2.png",
+      image: "/charpente2.jpg",
       alt: "Travaux sur une charpente",
     },
     {
-      image: "/charpente3.png",
+      image: "/charpente3.jpg",
       alt: "Éléments en bois d'une charpente de maison",
     },
   ];
 
   return (
     <>
+      <JsonLd
+        data={serviceJsonLd({
+          name: "Travaux de charpente",
+          description:
+            "Travaux de charpente à Perpignan et dans les Pyrénées-Orientales : rénovation, réparation et renforcement de la structure de toiture.",
+          path: "/charpente",
+          serviceType: "Charpente",
+        })}
+      />
       {/* HERO */}
       <SectionBanner
         title="Travaux de charpente à Perpignan"
         subtitle="Rénovation, réparation et intervention sur la structure de votre toiture dans les Pyrénées-Orientales"
-        backgroundImage="/charpente3.png"
+        backgroundImage="/charpente3.jpg"
         imageAlt="Structure en bois d'une charpente de toiture"
       />
 
@@ -215,6 +228,8 @@ export default function CharpentePage() {
       />
 
       {/* FAQ */}
+      <RelatedContent service="/charpente" serviceName="Charpente" />
+
       <FAQ
         title="Questions fréquentes sur les travaux de charpente"
         intro="Quelques informations utiles concernant la rénovation et la réparation d'une charpente."

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Phone } from "lucide-react";
+import { TrackedPhone, TrackedQuote } from "@/components/TrackedCTA";
 
 type Service = {
   title: string;
@@ -15,7 +16,7 @@ const servicesData: Service[] = [
     title: "Couverture",
     description:
       "Travaux de toiture, rénovation et intervention sur votre couverture à Perpignan et dans les Pyrénées-Orientales.",
-    image: "/couverture.png",
+    image: "/couverture.jpg",
     imageAlt: "Travaux de couverture de toiture dans les Pyrénées-Orientales",
     link: "/couverture",
   },
@@ -23,7 +24,7 @@ const servicesData: Service[] = [
     title: "Réparation de toiture",
     description:
       "Réparation de tuiles et éléments de toiture endommagés pour préserver l'étanchéité de votre habitation.",
-    image: "/reparations.png",
+    image: "/reparations.jpg",
     imageAlt: "Réparation d'une toiture à Perpignan",
     link: "/reparations",
   },
@@ -31,7 +32,7 @@ const servicesData: Service[] = [
     title: "Fuites & infiltrations",
     description:
       "Recherche de l'origine des infiltrations et réparation des fuites de toiture à Perpignan et dans le 66.",
-    image: "/fuites.png",
+    image: "/fuites.jpg",
     imageAlt: "Recherche et réparation d'une fuite de toiture",
     link: "/fuites",
   },
@@ -39,7 +40,7 @@ const servicesData: Service[] = [
     title: "Zinguerie",
     description:
       "Travaux de zinguerie et évacuation des eaux pluviales pour contribuer à l'étanchéité de votre toiture.",
-    image: "/zinguerie.png",
+    image: "/zinguerie.jpg",
     imageAlt: "Travaux de zinguerie sur une toiture",
     link: "/zinguerie",
   },
@@ -47,7 +48,7 @@ const servicesData: Service[] = [
     title: "Nettoyage de toiture",
     description:
       "Entretien et nettoyage de toiture pour retirer les salissures et préserver l'état de votre couverture.",
-    image: "/nettoyage.png",
+    image: "/nettoyage.jpg",
     imageAlt: "Nettoyage et entretien d'une toiture",
     link: "/nettoyage",
   },
@@ -55,7 +56,7 @@ const servicesData: Service[] = [
     title: "Charpente",
     description:
       "Travaux de charpente liés à la structure et à la rénovation de votre toiture dans les Pyrénées-Orientales.",
-    image: "/charpente3.png",
+    image: "/charpente3.jpg",
     imageAlt: "Travaux de charpente dans les Pyrénées-Orientales",
     link: "/charpente",
   },
@@ -99,7 +100,6 @@ export default function Services() {
               <Link
                 href={service.link}
                 className="flex h-full flex-col"
-                aria-label={`Découvrir le service ${service.title}`}
               >
                 {/* Image */}
                 <div className="relative aspect-[16/10] overflow-hidden bg-slate-200">
@@ -155,22 +155,23 @@ export default function Services() {
           </div>
 
           <div className="mt-7 flex flex-col gap-3 sm:flex-row lg:mt-0 lg:flex-shrink-0">
-            <a
-              href="tel:+33662125611"
-              aria-label="Appeler Couverture Catalane au 06 62 12 56 11"
+            <TrackedPhone
+              phone="+33662125611"
+              source="accueil_services"
+              ariaLabel="Appeler Couverture Catalane au 06 62 12 56 11"
               className="inline-flex min-h-14 items-center justify-center gap-2 rounded-full bg-orange-600 px-6 py-4 font-extrabold text-white transition hover:bg-orange-500"
             >
               <Phone size={19} aria-hidden="true" />
               06 62 12 56 11
-            </a>
+            </TrackedPhone>
 
-            <Link
-              href="/contact"
+            <TrackedQuote
+              source="accueil_services"
               className="inline-flex min-h-14 items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-4 font-extrabold text-white transition hover:bg-white/20"
             >
               Demander un devis
               <ArrowRight size={18} aria-hidden="true" />
-            </Link>
+            </TrackedQuote>
           </div>
         </div>
       </div>

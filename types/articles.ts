@@ -12,6 +12,8 @@ export interface ArticleQuestion {
 export interface Article {
   slug: string;
   title: string;
+  /** Titre court pour la balise <title> lorsque le H1 est trop long. */
+  seoTitle?: string;
   description: string;
   category: string;
   publishedAt: string;

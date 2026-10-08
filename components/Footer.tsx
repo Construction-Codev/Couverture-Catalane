@@ -12,6 +12,7 @@ import {
   TrackedPhone,
   TrackedQuote,
 } from "@/components/TrackedCTA";
+import CookieSettingsButton from "@/components/CookieSettingsButton";
 
 const services = [
   { name: "Couverture", href: "/couverture" },
@@ -222,12 +223,17 @@ export default function Footer() {
 
                 <span>
                   <span className="block text-xs font-bold uppercase tracking-wide text-slate-500">
-                    Zone d&apos;intervention
+                    Adresse
                   </span>
 
-                  <span className="mt-1 block text-sm font-extrabold leading-relaxed text-white">
-                    Perpignan &amp;
+                  <address className="mt-1 block text-sm font-extrabold not-italic leading-relaxed text-white">
+                    88 chemin des Charrettes
                     <br />
+                    66380 Pia
+                  </address>
+
+                  <span className="mt-2 block text-xs font-semibold leading-relaxed text-slate-400">
+                    Intervention à Perpignan et dans les
                     Pyrénées-Orientales
                   </span>
                 </span>
@@ -261,6 +267,7 @@ export default function Footer() {
                   {item.name}
                 </Link>
               ))}
+              <CookieSettingsButton className="cursor-pointer text-xs font-semibold text-slate-400 transition hover:text-orange-400" />
             </div>
 
             <a

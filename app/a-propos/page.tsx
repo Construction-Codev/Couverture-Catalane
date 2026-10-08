@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+
+import { pageOpenGraph } from "@/lib/seo";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -18,19 +20,19 @@ import {
 } from "@/components/TrackedCTA";
 
 export const metadata: Metadata = {
-  title: "À propos | Couvreur à Perpignan",
+  title: "Entreprise de couverture à Pia, près de Perpignan",
   description:
     "Découvrez Couverture Catalane, entreprise de couverture basée à Pia et intervenant à Perpignan et dans les Pyrénées-Orientales pour vos travaux de toiture.",
   alternates: {
     canonical: "/a-propos",
   },
-  openGraph: {
+  openGraph: pageOpenGraph({
     title: "À propos de Couverture Catalane",
     description:
       "Couverture Catalane intervient à Perpignan et dans les Pyrénées-Orientales pour vos travaux de couverture, réparation, fuite, zinguerie, nettoyage et charpente.",
     url: "/a-propos",
     type: "website",
-  },
+  }),
   twitter: {
     card: "summary_large_image",
     title: "À propos de Couverture Catalane",
@@ -92,7 +94,7 @@ export default function AProposPage() {
       ====================================================== */}
       <section className="border-b border-slate-200 bg-white">
         <div className="mx-auto max-w-7xl px-6 pb-16 pt-32 sm:px-8 lg:px-12 lg:pb-20 lg:pt-36">
-          <Breadcrumb items={[{ label: "À propos" }]} />
+          <Breadcrumb items={[{ label: "À propos" }]} currentPath="/a-propos" />
 
           <div className="mt-10 grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
             <div>

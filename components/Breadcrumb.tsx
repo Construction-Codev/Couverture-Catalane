@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { ChevronRight, Home } from "lucide-react";
 
+import JsonLd from "@/components/JsonLd";
+import { SITE_URL } from "@/lib/seo";
+
 type BreadcrumbItem = {
   label: string;
   href?: string;
@@ -10,8 +13,6 @@ type BreadcrumbProps = {
   items: BreadcrumbItem[];
   currentPath?: string;
 };
-
-const BASE_URL = "https://www.couverture-catalane.fr";
 
 export default function Breadcrumb({
   items,
@@ -40,7 +41,7 @@ export default function Breadcrumb({
         name: item.label,
         ...(href
           ? {
-              item: `${BASE_URL}${href}`,
+              item: `${SITE_URL}${href}`,
             }
           : {}),
       };
@@ -97,15 +98,7 @@ export default function Breadcrumb({
         </div>
       </nav>
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(jsonLd).replace(
-            /</g,
-            "\\u003c"
-          ),
-        }}
-      />
+      <JsonLd data={jsonLd} />
     </>
   );
 }

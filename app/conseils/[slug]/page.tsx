@@ -11,15 +11,24 @@ import {
 } from "lucide-react";
 
 import Breadcrumb from "@/components/Breadcrumb";
+import JsonLd from "@/components/JsonLd";
+import { TrackedPhone, TrackedQuote } from "@/components/TrackedCTA";
 import { articles } from "@/data/articles";
-
-const SITE_URL = "https://www.couverture-catalane.fr";
+import {
+  DEFAULT_OG_IMAGE,
+  PHONE_DISPLAY,
+  PHONE_E164,
+  SITE_URL,
+  pageOpenGraph,
+} from "@/lib/seo";
 
 type Props = {
   params: Promise<{
     slug: string;
   }>;
 };
+
+export const dynamicParams = false;
 
 export function generateStaticParams() {
   return articles.map((article) => ({
@@ -41,40 +50,35 @@ export async function generateMetadata({
   }
 
   const canonical = `/conseils/${article.slug}`;
+  const title = article.seoTitle ?? article.title;
+  const image = article.image
+    ? { url: article.image, alt: article.title }
+    : DEFAULT_OG_IMAGE;
 
   return {
-    title: article.title,
+    title,
     description: article.description,
 
     alternates: {
       canonical,
     },
 
-    openGraph: {
+    openGraph: pageOpenGraph({
       type: "article",
-      title: article.title,
+      title,
       description: article.description,
       url: canonical,
       publishedTime: article.publishedAt,
       modifiedTime:
         article.updatedAt || article.publishedAt,
-      images: article.image
-        ? [
-            {
-              url: article.image,
-              alt: article.title,
-            },
-          ]
-        : undefined,
-    },
+      images: [image],
+    }),
 
     twitter: {
       card: "summary_large_image",
-      title: article.title,
+      title,
       description: article.description,
-      images: article.image
-        ? [article.image]
-        : undefined,
+      images: [image.url],
     },
   };
 }
@@ -124,11 +128,8 @@ export default async function ArticlePage({
       url: SITE_URL,
     },
 
-    ...(article.image
-      ? {
-          image: `${SITE_URL}${article.image}`,
-        }
-      : {}),
+    image: `${SITE_URL}${article.image ?? DEFAULT_OG_IMAGE.url}`,
+    inLanguage: "fr-FR",
   };
 
   const relatedArticles = articles
@@ -141,12 +142,7 @@ export default async function ArticlePage({
 
   return (
     <main className="bg-white">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(articleJsonLd),
-        }}
-      />
+      <JsonLd data={articleJsonLd} />
 
       {/* HERO */}
       <section className="bg-slate-950 px-4 py-10 text-white sm:px-6 sm:py-14">
@@ -329,20 +325,22 @@ export default async function ArticlePage({
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3">
-              <Link
-                href="/contact"
-                className="rounded-xl bg-orange-500 px-5 py-3 text-sm font-bold text-white transition hover:bg-orange-600"
+              <TrackedQuote
+                source="article"
+                className="inline-flex min-h-12 items-center rounded-xl bg-orange-600 px-5 py-3 text-sm font-bold text-white transition hover:bg-orange-500"
               >
                 Demander un devis
-              </Link>
+              </TrackedQuote>
 
-              <a
-                href="tel:+33662125611"
-                className="inline-flex items-center gap-2 rounded-xl border border-slate-700 px-5 py-3 text-sm font-bold transition hover:bg-slate-800"
+              <TrackedPhone
+                phone={PHONE_E164}
+                source="article"
+                ariaLabel={`Appeler Couverture Catalane au ${PHONE_DISPLAY}`}
+                className="inline-flex min-h-12 items-center gap-2 rounded-xl border border-slate-700 px-5 py-3 text-sm font-bold transition hover:bg-slate-800"
               >
-                <Phone className="h-4 w-4" />
-                06 62 12 56 11
-              </a>
+                <Phone className="h-4 w-4" aria-hidden="true" />
+                {PHONE_DISPLAY}
+              </TrackedPhone>
             </div>
           </aside>
 

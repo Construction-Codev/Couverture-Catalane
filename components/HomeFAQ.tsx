@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { ArrowRight, ChevronDown } from "lucide-react";
+import { TrackedQuote } from "@/components/TrackedCTA";
 
 type FAQItem = {
   question: string;
@@ -78,13 +78,13 @@ export default function HomeFAQ() {
         </div>
 
         <div className="mt-10 text-center">
-          <Link
-            href="/contact"
+          <TrackedQuote
+            source="accueil_faq"
             className="inline-flex min-h-14 items-center justify-center gap-2 rounded-full bg-orange-600 px-7 py-4 font-extrabold text-white transition hover:bg-orange-500"
           >
             Parler de mon projet
             <ArrowRight size={18} aria-hidden="true" />
-          </Link>
+          </TrackedQuote>
         </div>
       </div>
     </section>

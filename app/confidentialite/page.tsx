@@ -3,6 +3,7 @@ import Link from "next/link";
 import {
   BarChart3,
   Clock,
+  Cookie,
   Database,
   Eye,
   LockKeyhole,
@@ -12,11 +13,12 @@ import {
 } from "lucide-react";
 
 import Breadcrumb from "@/components/Breadcrumb";
+import CookieSettingsButton from "@/components/CookieSettingsButton";
 
 export const metadata: Metadata = {
   title: "Politique de confidentialité",
   description:
-    "Politique de confidentialité de Couverture Catalane : données du formulaire de contact, utilisation, conservation, mesure d’audience et droits relatifs aux données personnelles.",
+    "Politique de confidentialité de Couverture Catalane : données du formulaire de contact, utilisation, conservation, mesure d’audience, cookies et droits relatifs aux données personnelles.",
   alternates: {
     canonical: "/confidentialite",
   },
@@ -84,6 +86,42 @@ const sections = [
         Aucune information saisie dans les champs du formulaire — nom, e-mail,
         téléphone ou message — n&apos;est volontairement envoyée dans les
         événements de mesure d&apos;audience configurés sur ce site.
+        Ces outils (Vercel Analytics et Speed Insights) fonctionnent sans
+        cookie.
+      </>
+    ),
+  },
+  {
+    id: "cookies",
+    title: "Cookies et Google Ads",
+    icon: Cookie,
+    content: (
+      <>
+        <p>
+          Avec votre accord uniquement, le site utilise la balise Google Ads
+          (Google Ireland Limited) pour mesurer l&apos;efficacité des
+          annonces : clics sur le numéro de téléphone et demandes de devis
+          envoyées depuis le formulaire. Elle peut déposer des cookies
+          publicitaires (par exemple <code>_gcl_au</code>) d&apos;une durée
+          maximale de 13 mois. Aucune information saisie dans le formulaire
+          n&apos;est transmise à Google.
+        </p>
+        <p className="mt-3">
+          Tant que vous n&apos;avez pas accepté, la balise Google Ads
+          n&apos;est pas chargée et aucun cookie publicitaire n&apos;est
+          déposé. Refuser n&apos;empêche pas d&apos;utiliser le site, de nous
+          appeler ou de demander un devis.
+        </p>
+        <p className="mt-3">
+          Votre choix est conservé 6 mois dans votre navigateur, puis vous
+          sera de nouveau demandé. Vous pouvez le modifier ou retirer votre
+          consentement à tout moment avec le lien « Gestion des cookies » en
+          bas de chaque page ou ici :{" "}
+          <CookieSettingsButton className="cursor-pointer font-extrabold text-orange-600 underline underline-offset-2 transition hover:text-orange-500">
+            modifier mon choix
+          </CookieSettingsButton>
+          . En cas de retrait, les cookies Google Ads sont supprimés.
+        </p>
       </>
     ),
   },
@@ -151,7 +189,8 @@ export default function PolitiqueConfidentialitePage() {
             return (
               <section
                 key={section.title}
-                className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8"
+                id={section.id}
+                className="scroll-mt-28 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8"
               >
                 <div className="flex items-start gap-4">
                   <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-orange-50 text-orange-600">
