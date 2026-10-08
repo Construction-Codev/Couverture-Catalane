@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, MapPin } from "lucide-react";
+import { ArrowLeft, ArrowRight, BookOpen, MapPin } from "lucide-react";
 
 import Breadcrumb from "@/components/Breadcrumb";
 import { TrackedPhone, TrackedQuote } from "@/components/TrackedCTA";
@@ -12,15 +12,23 @@ import {
   inCity,
   pageOpenGraph,
 } from "@/lib/seo";
-import realisations from "@/data/realisations.json";
+import { articles } from "@/data/articles";
+import realisationsData from "@/data/realisations.json";
+import { articlesByService, services } from "@/lib/maillage";
+import type {
+  Realisation,
+  RealisationCategory,
+} from "@/types/realisation";
 
-const serviceLabels: Record<string, string> = {
-  "/couverture": "Couverture et rénovation de toiture",
-  "/reparations": "Réparation de toiture",
-  "/fuites": "Recherche et réparation de fuite",
-  "/zinguerie": "Zinguerie et gouttières",
-  "/nettoyage": "Nettoyage et démoussage de toiture",
-  "/charpente": "Travaux de charpente",
+const realisations = realisationsData as Realisation[];
+
+const categoryLabels: Record<RealisationCategory, string> = {
+  urgence: "Urgence",
+  reparation: "Réparation",
+  refection: "Réfection de toiture",
+  nettoyage: "Nettoyage & démoussage",
+  zinguerie: "Zinguerie",
+  charpente: "Charpente",
 };
 
 type Props = {
@@ -50,15 +58,17 @@ export async function generateMetadata({
     return {};
   }
 
+  const description = `${project.summary} Par Couverture Catalane, couvreur dans les Pyrénées-Orientales.`;
+
   return {
     title: `${project.title} ${inCity(project.city)}`,
-    description: project.summary,
+    description,
     alternates: {
       canonical: `/realisations/${project.slug}`,
     },
     openGraph: pageOpenGraph({
       title: `${project.title} ${inCity(project.city)} | Couverture Catalane`,
-      description: project.summary,
+      description,
       url: `/realisations/${project.slug}`,
       ...(project.image
         ? {
@@ -87,13 +97,25 @@ export default async function RealisationPage({
     notFound();
   }
 
-  const relatedProjects = realisations
-    .filter(
-      (item) =>
-        item.category === project.category &&
-        item.slug !== project.slug
-    )
+  const service = services[project.service];
+
+  const serviceArticles = (articlesByService[project.service] ?? [])
+    .map((slug) => articles.find((article) => article.slug === slug))
+    .filter((article) => article !== undefined)
     .slice(0, 2);
+
+  // Même type de chantier d'abord, puis chantiers dans la même commune.
+  const otherProjects = realisations.filter(
+    (item) => item.slug !== project.slug
+  );
+
+  const relatedProjects = [
+    ...otherProjects.filter((item) => item.category === project.category),
+    ...otherProjects.filter(
+      (item) =>
+        item.category !== project.category && item.city === project.city
+    ),
+  ].slice(0, 3);
 
   return (
     <main className="bg-slate-50">
@@ -124,7 +146,7 @@ export default async function RealisationPage({
             <div className="p-6 sm:p-10">
               <div className="mb-5 flex flex-wrap items-center gap-3">
                 <span className="rounded-full bg-orange-50 px-3 py-1 text-xs font-bold text-orange-700">
-                  {project.category}
+                  {categoryLabels[project.category]}
                 </span>
 
                 <span className="flex items-center gap-1.5 text-sm text-slate-500">
@@ -172,14 +194,59 @@ export default async function RealisationPage({
                 </p>
               </div>
 
+              {service && (
+                <div className="mt-10 max-w-3xl border-t border-slate-200 pt-8">
+                  <p className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                    Prestation associée
+                  </p>
+
+                  <h2 className="mt-2 text-2xl font-bold text-slate-950">
+                    {service.label}
+                  </h2>
+
+                  <p className="mt-4 leading-7 text-slate-600">
+                    {service.summary}
+                  </p>
+
+                  <Link
+                    href={project.service}
+                    className="mt-4 inline-flex items-center gap-2 font-bold text-orange-600 transition hover:text-orange-700"
+                  >
+                    {service.label} : notre approche
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+
+                  {serviceArticles.length > 0 && (
+                    <ul className="mt-6 space-y-3">
+                      {serviceArticles.map((article) => (
+                        <li key={article.slug}>
+                          <Link
+                            href={`/conseils/${article.slug}`}
+                            className="group flex items-start gap-3 text-slate-700 transition hover:text-orange-600"
+                          >
+                            <BookOpen
+                              className="mt-1 h-4 w-4 shrink-0 text-orange-600"
+                              aria-hidden="true"
+                            />
+                            <span className="font-semibold">
+                              {article.title}
+                            </span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              )}
+
               <div className="mt-10 rounded-2xl bg-slate-950 p-6 text-white sm:p-8">
                 <p className="text-sm font-semibold text-orange-400">
                   Besoin similaire ?
                 </p>
 
                 <h2 className="mt-2 text-2xl font-bold">
-                  Vous avez un projet de toiture dans les
-                  Pyrénées-Orientales ?
+                  Un projet de toiture {inCity(project.city)} ou dans
+                  les environs ?
                 </h2>
 
                 <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-300">
@@ -205,37 +272,24 @@ export default async function RealisationPage({
                   </TrackedPhone>
                 </div>
               </div>
-
-              <div className="mt-8 border-t border-slate-200 pt-8">
-                <p className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                  Prestation associée
-                </p>
-
-                <Link
-                  href={project.service}
-                  className="mt-3 inline-flex items-center gap-2 font-bold text-orange-600 transition hover:text-orange-700"
-                >
-                  {serviceLabels[project.service] ?? "Découvrir ce service"}
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
             </div>
           </article>
 
           {relatedProjects.length > 0 && (
             <section className="mt-12">
               <h2 className="text-2xl font-bold text-slate-950">
-                Autres réalisations similaires
+                Autres chantiers de la région
               </h2>
 
-              <div className="mt-6 grid gap-5 sm:grid-cols-2">
+              <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
                 {relatedProjects.map((item) => (
                   <Link
                     key={item.slug}
                     href={`/realisations/${item.slug}`}
                     className="rounded-2xl border border-slate-200 bg-white p-6 transition hover:border-orange-300 hover:shadow-sm"
                   >
-                    <span className="text-xs font-bold text-orange-600">
+                    <span className="flex items-center gap-1.5 text-xs font-bold text-orange-600">
+                      <MapPin className="h-3.5 w-3.5" aria-hidden="true" />
                       {item.city}
                     </span>
 

@@ -13,7 +13,7 @@ import RelatedContent from "@/components/RelatedContent";
 export const metadata: Metadata = {
   title: "Couverture et rénovation de toiture à Perpignan",
   description:
-    "Travaux de couverture à Perpignan et dans les Pyrénées-Orientales : rénovation de toiture, remplacement de tuiles, réparation et étanchéité.",
+    "Rénovation et réfection de toiture à Perpignan et dans les Pyrénées-Orientales : remplacement de tuiles, remise en état de la couverture et étanchéité.",
 
   alternates: {
     canonical: "/couverture",

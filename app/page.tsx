@@ -5,6 +5,7 @@ import { pageOpenGraph } from "@/lib/seo";
 import Banner from "@/components/Banner";
 import Services from "@/components/Services";
 import LocalExpertise from "@/components/LocalExpertise";
+import HomeRealisations from "@/components/HomeRealisations";
 import HomeFAQ from "@/components/HomeFAQ";
 
 export const metadata: Metadata = {
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
   },
 
   description:
-    "Couverture Catalane réalise vos travaux de couverture, réparation de toiture, zinguerie, charpente et nettoyage à Perpignan et dans les Pyrénées-Orientales.",
+    "Couvreur basé à Pia, Couverture Catalane intervient à Perpignan et dans le 66 : rénovation et réparation de toiture, fuites, zinguerie. Demandez votre devis.",
 
   alternates: {
     canonical: "/",
@@ -42,6 +43,7 @@ export default function Home() {
         <Banner />
         <Services />
         <LocalExpertise />
+        <HomeRealisations />
         <HomeFAQ />
       </main>
     </div>

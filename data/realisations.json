@@ -117,7 +117,7 @@
     "date": "",
     "image": "",
     "summary": "Travaux de réfection réalisés sur une toiture située à Pia.",
-    "description": "Sur ce chantier à Pia, Couverture Catalane est intervenu pour réaliser des travaux de réfection de toiture. Cette réalisation sera complétée avec les différentes étapes du chantier et les éléments de couverture remplacés."
+    "description": "Sur ce chantier à Pia, Couverture Catalane est intervenu pour réaliser des travaux de réfection de toiture."
   },
   {
     "id": "CC-REA-011",
@@ -129,7 +129,7 @@
     "date": "",
     "image": "",
     "summary": "Réalisation de travaux de zinguerie sur une toiture à Perpignan.",
-    "description": "Couverture Catalane a réalisé des travaux de zinguerie sur cette toiture à Perpignan. Cette fiche sera complétée avec la nature précise des éléments concernés afin de présenter les différentes étapes de l’intervention."
+    "description": "Couverture Catalane a réalisé des travaux de zinguerie sur cette toiture à Perpignan."
   },
   {
     "id": "CC-REA-012",
@@ -141,7 +141,7 @@
     "date": "",
     "image": "",
     "summary": "Chantier de zinguerie réalisé sur une toiture à Torreilles.",
-    "description": "À Torreilles, Couverture Catalane est intervenu pour réaliser des travaux de zinguerie sur une toiture. Les photographies du chantier permettront de détailler les ouvrages réalisés et les différentes phases de l’intervention."
+    "description": "À Torreilles, Couverture Catalane est intervenu pour réaliser des travaux de zinguerie sur une toiture."
   },
   {
     "id": "CC-REA-013",
@@ -153,7 +153,7 @@
     "date": "",
     "image": "",
     "summary": "Travaux de zinguerie réalisés sur une toiture située à Thuir.",
-    "description": "Ce chantier situé à Thuir a nécessité l’intervention de Couverture Catalane pour des travaux de zinguerie. Les informations techniques pourront être précisées à partir des photographies et du détail réel des travaux réalisés."
+    "description": "Ce chantier situé à Thuir a nécessité l’intervention de Couverture Catalane pour des travaux de zinguerie."
   },
   {
     "id": "CC-REA-014",
@@ -165,7 +165,7 @@
     "date": "",
     "image": "",
     "summary": "Travaux de charpente réalisés sur une habitation à Perpignan.",
-    "description": "Couverture Catalane a réalisé des travaux de charpente sur une habitation située à Perpignan. Cette réalisation sera détaillée avec les éléments de charpente concernés et les photographies prises pendant le chantier."
+    "description": "Couverture Catalane a réalisé des travaux de charpente sur une habitation située à Perpignan."
   },
   {
     "id": "CC-REA-015",
@@ -177,6 +177,6 @@
     "date": "",
     "image": "",
     "summary": "Chantier de charpente réalisé à Villelongue-de-la-Salanque.",
-    "description": "À Villelongue-de-la-Salanque, Couverture Catalane a réalisé une intervention sur la charpente d’une habitation. La présentation du chantier sera enrichie avec les photographies et la description précise des travaux effectués."
+    "description": "À Villelongue-de-la-Salanque, Couverture Catalane a réalisé une intervention sur la charpente d’une habitation."
   }
 ]
