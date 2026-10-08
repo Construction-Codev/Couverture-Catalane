@@ -83,16 +83,18 @@ export function trackQuoteClick(source: string) {
   track("clic_devis", { source });
 }
 
-/** Formulaire envoyé avec succès (Vercel Analytics + conversion Google Ads). */
-export function trackFormSuccess(source: string) {
+/**
+ * Demande réellement transmise par le serveur (Vercel Analytics +
+ * conversion Google Ads). `transactionId` : identifiant de l'e-mail
+ * envoyé, qui permet à Google Ads d'ignorer un éventuel doublon.
+ */
+export function trackFormSuccess(source: string, transactionId?: string) {
   track("devis_envoye", { source });
 
-  // L'identifiant de transaction permet à Google Ads d'ignorer un
-  // éventuel doublon de la même demande.
   sendAdsConversion({
     send_to: ADS_FORM_CONVERSION,
     value: 1.0,
     currency: "EUR",
-    transaction_id: uniqueId(),
+    transaction_id: transactionId || uniqueId(),
   });
 }
