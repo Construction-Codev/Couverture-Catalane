@@ -126,12 +126,15 @@ export async function POST(req: Request) {
 
     // Robot probable (champ piège rempli ou envoi instantané) :
     // réponse identique à un succès, sans envoyer d'e-mail.
-    const elapsedMs =
-      typeof body.elapsedMs === "number" ? body.elapsedMs : 0;
+    // Une demande sans `elapsedMs` (page ouverte avant une mise à jour
+    // du site) n'est pas rejetée, pour ne perdre aucun prospect.
+    const tooFast =
+      typeof body.elapsedMs === "number" &&
+      body.elapsedMs < MIN_FILL_TIME_MS;
 
     if (
       (typeof body.website === "string" && body.website.trim() !== "") ||
-      elapsedMs < MIN_FILL_TIME_MS
+      tooFast
     ) {
       console.warn("Demande de contact ignorée (anti-spam).");
 
