@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 
-import { pageOpenGraph } from "@/lib/seo";
+import { pageOpenGraph, serviceJsonLd } from "@/lib/seo";
 
 import Breadcrumb from "@/components/Breadcrumb";
+import JsonLd from "@/components/JsonLd";
 import FAQ from "@/components/FAQ";
 import RelatedContent from "@/components/RelatedContent";
 import SectionBanner from "@/components/SectionBanner";
@@ -53,6 +54,15 @@ export default function ZingueriePage() {
 
   return (
     <>
+      <JsonLd
+        data={serviceJsonLd({
+          name: "Zinguerie et gouttières",
+          description:
+            "Travaux de zinguerie à Perpignan et dans les Pyrénées-Orientales : gouttières, évacuation des eaux pluviales et raccords d’étanchéité.",
+          path: "/zinguerie",
+          serviceType: "Zinguerie",
+        })}
+      />
       <SectionBanner
         title="Zinguerie et gouttières à Perpignan"
         subtitle="Travaux liés à l'étanchéité et à l'évacuation des eaux pluviales dans les Pyrénées-Orientales"

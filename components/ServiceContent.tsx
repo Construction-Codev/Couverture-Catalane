@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, Phone } from "lucide-react";
+import { TrackedPhone, TrackedQuote } from "@/components/TrackedCTA";
 
 type ServiceItem = {
   title: string;
@@ -45,21 +46,22 @@ export default function ServiceContent({
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link
-                href="/contact"
+              <TrackedQuote
+                source="service_contenu"
                 className="inline-flex min-h-14 items-center justify-center gap-2 rounded-full bg-orange-600 px-7 py-4 font-extrabold text-white transition hover:bg-orange-500"
               >
                 Demander un devis
                 <ArrowRight size={18} aria-hidden="true" />
-              </Link>
+              </TrackedQuote>
 
-              <a
-                href="tel:+33662125611"
+              <TrackedPhone
+                phone="+33662125611"
+                source="service_contenu"
                 className="inline-flex min-h-14 items-center justify-center gap-2 rounded-full border border-slate-300 px-7 py-4 font-extrabold text-slate-900 transition hover:bg-slate-50"
               >
                 <Phone size={18} aria-hidden="true" />
                 06 62 12 56 11
-              </a>
+              </TrackedPhone>
             </div>
           </div>
 

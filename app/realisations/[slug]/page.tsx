@@ -5,14 +5,31 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, MapPin } from "lucide-react";
 
 import Breadcrumb from "@/components/Breadcrumb";
-import { pageOpenGraph } from "@/lib/seo";
+import { TrackedPhone, TrackedQuote } from "@/components/TrackedCTA";
+import {
+  PHONE_DISPLAY,
+  PHONE_E164,
+  inCity,
+  pageOpenGraph,
+} from "@/lib/seo";
 import realisations from "@/data/realisations.json";
+
+const serviceLabels: Record<string, string> = {
+  "/couverture": "Couverture et rénovation de toiture",
+  "/reparations": "Réparation de toiture",
+  "/fuites": "Recherche et réparation de fuite",
+  "/zinguerie": "Zinguerie et gouttières",
+  "/nettoyage": "Nettoyage et démoussage de toiture",
+  "/charpente": "Travaux de charpente",
+};
 
 type Props = {
   params: Promise<{
     slug: string;
   }>;
 };
+
+export const dynamicParams = false;
 
 export function generateStaticParams() {
   return realisations.map((project) => ({
@@ -34,13 +51,13 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${project.title} à ${project.city}`,
+    title: `${project.title} ${inCity(project.city)}`,
     description: project.summary,
     alternates: {
       canonical: `/realisations/${project.slug}`,
     },
     openGraph: pageOpenGraph({
-      title: `${project.title} à ${project.city} | Couverture Catalane`,
+      title: `${project.title} ${inCity(project.city)} | Couverture Catalane`,
       description: project.summary,
       url: `/realisations/${project.slug}`,
       ...(project.image
@@ -48,7 +65,7 @@ export async function generateMetadata({
             images: [
               {
                 url: project.image,
-                alt: `${project.title} à ${project.city}`,
+                alt: `${project.title} ${inCity(project.city)}`,
               },
             ],
           }
@@ -123,7 +140,7 @@ export default async function RealisationPage({
               </div>
 
               <h1 className="max-w-3xl text-3xl font-black tracking-tight text-slate-950 sm:text-5xl">
-                {project.title} à {project.city}
+                {project.title} {inCity(project.city)}
               </h1>
 
               <p className="mt-5 max-w-3xl text-base leading-7 text-slate-600 sm:text-lg">
@@ -135,7 +152,7 @@ export default async function RealisationPage({
               <div className="relative aspect-video w-full bg-slate-100">
                 <Image
                   src={project.image}
-                  alt={`${project.title} à ${project.city}`}
+                  alt={`${project.title} ${inCity(project.city)}`}
                   fill
                   priority
                   sizes="(max-width: 1024px) 100vw, 1024px"
@@ -171,19 +188,21 @@ export default async function RealisationPage({
                 </p>
 
                 <div className="mt-6 flex flex-wrap gap-3">
-                  <Link
-                    href="/contact"
-                    className="rounded-xl bg-orange-500 px-5 py-3 text-sm font-bold text-white transition hover:bg-orange-600"
+                  <TrackedQuote
+                    source="realisation"
+                    className="inline-flex min-h-12 items-center rounded-xl bg-orange-600 px-5 py-3 text-sm font-bold text-white transition hover:bg-orange-500"
                   >
                     Demander un devis
-                  </Link>
+                  </TrackedQuote>
 
-                  <a
-                    href="tel:+33662125611"
-                    className="rounded-xl border border-slate-700 px-5 py-3 text-sm font-bold transition hover:bg-slate-800"
+                  <TrackedPhone
+                    phone={PHONE_E164}
+                    source="realisation"
+                    ariaLabel={`Appeler Couverture Catalane au ${PHONE_DISPLAY}`}
+                    className="inline-flex min-h-12 items-center rounded-xl border border-slate-700 px-5 py-3 text-sm font-bold transition hover:bg-slate-800"
                   >
-                    06 62 12 56 11
-                  </a>
+                    {PHONE_DISPLAY}
+                  </TrackedPhone>
                 </div>
               </div>
 
@@ -196,7 +215,7 @@ export default async function RealisationPage({
                   href={project.service}
                   className="mt-3 inline-flex items-center gap-2 font-bold text-orange-600 transition hover:text-orange-700"
                 >
-                  Découvrir ce service
+                  {serviceLabels[project.service] ?? "Découvrir ce service"}
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>

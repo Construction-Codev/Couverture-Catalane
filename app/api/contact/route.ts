@@ -6,7 +6,47 @@ type ContactBody = {
   email?: unknown;
   phone?: unknown;
   message?: unknown;
+  website?: unknown;
+  elapsedMs?: unknown;
 };
+
+const MAX_BODY_LENGTH = 20_000;
+
+// Un humain met plusieurs secondes à remplir le formulaire.
+const MIN_FILL_TIME_MS = 2_000;
+
+// Limitation best-effort par adresse IP (mémoire de l'instance serveur).
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+const RATE_LIMIT_MAX = 10;
+const recentRequests = new Map<string, number[]>();
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const timestamps = (recentRequests.get(ip) ?? []).filter(
+    (time) => now - time < RATE_LIMIT_WINDOW_MS
+  );
+
+  timestamps.push(now);
+  recentRequests.set(ip, timestamps);
+
+  if (recentRequests.size > 1000) {
+    for (const [key, times] of recentRequests) {
+      if (times.every((time) => now - time >= RATE_LIMIT_WINDOW_MS)) {
+        recentRequests.delete(key);
+      }
+    }
+  }
+
+  return timestamps.length > RATE_LIMIT_MAX;
+}
+
+function getClientIp(req: Request): string {
+  return (
+    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+    req.headers.get("x-real-ip") ||
+    "unknown"
+  );
+}
 
 function escapeHtml(value: string): string {
   return value
@@ -42,10 +82,29 @@ export async function POST(req: Request) {
       );
     }
 
+    if (isRateLimited(getClientIp(req))) {
+      return NextResponse.json(
+        {
+          message:
+            "Trop de demandes envoyées. Merci de réessayer plus tard ou de nous appeler au 06 62 12 56 11.",
+        },
+        { status: 429 }
+      );
+    }
+
     let body: ContactBody;
 
     try {
-      body = (await req.json()) as ContactBody;
+      const raw = await req.text();
+
+      if (raw.length > MAX_BODY_LENGTH) {
+        return NextResponse.json(
+          { message: "Votre message est trop long." },
+          { status: 413 }
+        );
+      }
+
+      body = JSON.parse(raw) as ContactBody;
     } catch {
       return NextResponse.json(
         { message: "Requête invalide." },
@@ -65,7 +124,24 @@ export async function POST(req: Request) {
       );
     }
 
-    const name = body.name.trim();
+    // Robot probable (champ piège rempli ou envoi instantané) :
+    // réponse identique à un succès, sans envoyer d'e-mail.
+    const elapsedMs =
+      typeof body.elapsedMs === "number" ? body.elapsedMs : 0;
+
+    if (
+      (typeof body.website === "string" && body.website.trim() !== "") ||
+      elapsedMs < MIN_FILL_TIME_MS
+    ) {
+      console.warn("Demande de contact ignorée (anti-spam).");
+
+      return NextResponse.json(
+        { message: "Votre demande a bien été envoyée." },
+        { status: 200 }
+      );
+    }
+
+    const name = body.name.trim().replace(/[\r\n]+/g, " ");
     const email = body.email.trim().toLowerCase();
     const phone = body.phone.trim();
     const message = body.message.trim();

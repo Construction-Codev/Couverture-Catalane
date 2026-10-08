@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 
-import { pageOpenGraph } from "@/lib/seo";
+import { pageOpenGraph, serviceJsonLd } from "@/lib/seo";
 
 import Breadcrumb from "@/components/Breadcrumb";
+import JsonLd from "@/components/JsonLd";
 import FAQ from "@/components/FAQ";
 import RelatedContent from "@/components/RelatedContent";
 import SectionBanner from "@/components/SectionBanner";
@@ -53,6 +54,15 @@ export default function ReparationsPage() {
 
   return (
     <>
+      <JsonLd
+        data={serviceJsonLd({
+          name: "Réparation de toiture",
+          description:
+            "Réparation de toiture à Perpignan et dans les Pyrénées-Orientales : tuiles cassées ou déplacées, éléments de couverture endommagés et remise en état.",
+          path: "/reparations",
+          serviceType: "Réparation de toiture",
+        })}
+      />
       <SectionBanner
         title="Réparation de toiture à Perpignan"
         subtitle="Remise en état des tuiles et éléments de toiture endommagés dans les Pyrénées-Orientales"

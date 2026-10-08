@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 
-import { pageOpenGraph } from "@/lib/seo";
+import { pageOpenGraph, serviceJsonLd } from "@/lib/seo";
 
 import Breadcrumb from "@/components/Breadcrumb";
+import JsonLd from "@/components/JsonLd";
 import FAQ from "@/components/FAQ";
 import RelatedContent from "@/components/RelatedContent";
 import SectionBanner from "@/components/SectionBanner";
@@ -10,7 +11,7 @@ import ServiceContent from "@/components/ServiceContent";
 import ServiceGallery from "@/components/ServiceGallery";
 
 export const metadata: Metadata = {
-  title: "Nettoyage, démoussage & hydrofuge toiture à Perpignan",
+  title: "Nettoyage et démoussage de toiture à Perpignan",
 
   description:
     "Nettoyage, démoussage et traitement hydrofuge de toiture à Perpignan et dans les Pyrénées-Orientales. Entretien de votre couverture par Couverture Catalane.",
@@ -55,6 +56,15 @@ export default function NettoyagePage() {
 
   return (
     <>
+      <JsonLd
+        data={serviceJsonLd({
+          name: "Nettoyage, démoussage et hydrofuge de toiture",
+          description:
+            "Nettoyage, démoussage et traitement hydrofuge de toiture à Perpignan et dans les Pyrénées-Orientales.",
+          path: "/nettoyage",
+          serviceType: "Nettoyage et démoussage de toiture",
+        })}
+      />
       {/* HERO */}
       <SectionBanner
         title="Nettoyage et hydrofuge de toiture à Perpignan"

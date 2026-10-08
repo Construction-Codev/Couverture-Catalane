@@ -135,7 +135,7 @@ const trackQuote = (source: string) => {
             alt="Couverture Catalane"
             width={72}
             height={72}
-            priority
+            loading="eager"
             className="h-16 w-auto object-contain"
           />
         </Link>

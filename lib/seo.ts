@@ -26,3 +26,59 @@ export function pageOpenGraph(openGraph: OpenGraph): OpenGraph {
     ...openGraph,
   } as OpenGraph;
 }
+
+export const PHONE_E164 = "+33662125611";
+export const PHONE_DISPLAY = "06 62 12 56 11";
+
+/**
+ * Sérialise un objet JSON-LD pour <script type="application/ld+json">
+ * en neutralisant les "<" (évite toute fermeture prématurée de balise).
+ */
+export function serializeJsonLd(data: unknown): string {
+  return JSON.stringify(data).replace(/</g, "\\u003c");
+}
+
+/**
+ * "à Perpignan", mais "au Barcarès" / "aux Angles" : évite les
+ * tournures incorrectes du type "à Le Barcarès" dans les titres.
+ */
+export function inCity(city: string): string {
+  if (city.startsWith("Le ")) return `au ${city.slice(3)}`;
+  if (city.startsWith("Les ")) return `aux ${city.slice(4)}`;
+  return `à ${city}`;
+}
+
+type ServiceJsonLdInput = {
+  name: string;
+  description: string;
+  path: string;
+  serviceType: string;
+};
+
+/**
+ * Données structurées Service rattachées à l'entreprise déclarée
+ * dans le layout (RoofingContractor, @id `${SITE_URL}/#business`).
+ */
+export function serviceJsonLd({
+  name,
+  description,
+  path,
+  serviceType,
+}: ServiceJsonLdInput) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${SITE_URL}${path}#service`,
+    name,
+    description,
+    serviceType,
+    url: `${SITE_URL}${path}`,
+    provider: {
+      "@id": `${SITE_URL}/#business`,
+    },
+    areaServed: [
+      { "@type": "City", name: "Perpignan" },
+      { "@type": "AdministrativeArea", name: "Pyrénées-Orientales" },
+    ],
+  };
+}

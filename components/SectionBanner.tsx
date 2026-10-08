@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
 import { ArrowRight, Phone } from "lucide-react";
+import { TrackedPhone, TrackedQuote } from "@/components/TrackedCTA";
 
 type SectionBannerProps = {
   title: string;
@@ -60,21 +60,22 @@ export default function SectionBanner({
 
           {showActions && (
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link
-                href="/contact"
+              <TrackedQuote
+                source="service_hero"
                 className="inline-flex min-h-14 items-center justify-center gap-2 rounded-full bg-orange-600 px-7 py-4 text-base font-extrabold text-white shadow-xl shadow-orange-950/30 transition hover:bg-orange-500 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-400"
               >
                 Demander un devis
                 <ArrowRight size={19} aria-hidden="true" />
-              </Link>
+              </TrackedQuote>
 
-              <a
-                href="tel:+33662125611"
+              <TrackedPhone
+                phone="+33662125611"
+                source="service_hero"
                 className="inline-flex min-h-14 items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-7 py-4 text-base font-extrabold text-white backdrop-blur-md transition hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
               >
                 <Phone size={19} aria-hidden="true" />
                 06 62 12 56 11
-              </a>
+              </TrackedPhone>
             </div>
           )}
         </div>

@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, MapPin } from "lucide-react";
 
+import { inCity } from "@/lib/seo";
+
 import type {
   Realisation,
   RealisationCategory,
@@ -91,7 +93,7 @@ export default function RealisationGrid({
               >
                 <Image
                   src={item.image}
-                  alt={`${item.title} à ${item.city}`}
+                  alt={`${item.title} ${inCity(item.city)}`}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover transition-transform duration-300 group-hover:scale-105"

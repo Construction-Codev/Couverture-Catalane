@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import {
   ArrowRight,
   CheckCircle2,
@@ -7,6 +6,7 @@ import {
   MapPin,
   Phone,
 } from "lucide-react";
+import { TrackedPhone, TrackedQuote } from "@/components/TrackedCTA";
 
 export default function Banner() {
   return (
@@ -96,23 +96,24 @@ export default function Banner() {
 
           {/* CTA */}
           <div className="mt-9 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-            <a
-              href="tel:+33662125611"
+            <TrackedPhone
+              phone="+33662125611"
+              source="accueil_hero"
               className="inline-flex min-h-14 w-full items-center justify-center gap-3 rounded-full bg-orange-600 px-7 py-4 text-base font-extrabold text-white shadow-xl shadow-orange-950/30 transition hover:bg-orange-500 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-400 sm:w-auto"
-              aria-label="Appeler Couverture Catalane au 06 62 12 56 11"
+              ariaLabel="Appeler Couverture Catalane au 06 62 12 56 11"
             >
               <Phone size={20} aria-hidden="true" />
               06 62 12 56 11
-            </a>
+            </TrackedPhone>
 
-            <Link
-              href="/contact"
+            <TrackedQuote
+              source="accueil_hero"
               className="inline-flex min-h-14 w-full items-center justify-center gap-3 rounded-full bg-white px-7 py-4 text-base font-extrabold text-slate-950 shadow-xl transition hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:w-auto"
             >
               <FileText size={20} aria-hidden="true" />
               Demander un devis
               <ArrowRight size={18} aria-hidden="true" />
-            </Link>
+            </TrackedQuote>
           </div>
 
           {/* Micro-copy */}

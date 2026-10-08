@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Phone } from "lucide-react";
+import { TrackedPhone, TrackedQuote } from "@/components/TrackedCTA";
 
 type Service = {
   title: string;
@@ -99,7 +100,6 @@ export default function Services() {
               <Link
                 href={service.link}
                 className="flex h-full flex-col"
-                aria-label={`Découvrir le service ${service.title}`}
               >
                 {/* Image */}
                 <div className="relative aspect-[16/10] overflow-hidden bg-slate-200">
@@ -155,22 +155,23 @@ export default function Services() {
           </div>
 
           <div className="mt-7 flex flex-col gap-3 sm:flex-row lg:mt-0 lg:flex-shrink-0">
-            <a
-              href="tel:+33662125611"
-              aria-label="Appeler Couverture Catalane au 06 62 12 56 11"
+            <TrackedPhone
+              phone="+33662125611"
+              source="accueil_services"
+              ariaLabel="Appeler Couverture Catalane au 06 62 12 56 11"
               className="inline-flex min-h-14 items-center justify-center gap-2 rounded-full bg-orange-600 px-6 py-4 font-extrabold text-white transition hover:bg-orange-500"
             >
               <Phone size={19} aria-hidden="true" />
               06 62 12 56 11
-            </a>
+            </TrackedPhone>
 
-            <Link
-              href="/contact"
+            <TrackedQuote
+              source="accueil_services"
               className="inline-flex min-h-14 items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-4 font-extrabold text-white transition hover:bg-white/20"
             >
               Demander un devis
               <ArrowRight size={18} aria-hidden="true" />
-            </Link>
+            </TrackedQuote>
           </div>
         </div>
       </div>

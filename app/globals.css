@@ -9,28 +9,18 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  scroll-behavior: smooth;
   background-color: #f8fafc;
   color: #0f172a;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
-  padding-top: 6.5rem; 
-}
-
-body[data-mobile-menu-open="true"] #mobile-cta {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transform: translateY(100%);
-}
-
-#mobile-cta {
-  transition:
-    opacity 180ms ease,
-    transform 180ms ease,
-    visibility 180ms ease;
+  /* Hauteur du header fixe (h-20) */
+  padding-top: 5rem;
 }
 
 #mobile-cta {
@@ -51,6 +41,8 @@ body[data-mobile-menu-open="true"] #mobile-cta,
   transform: translateY(100%);
 }
 
-html {
-  scroll-behavior: smooth;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 
-import { pageOpenGraph } from "@/lib/seo";
+import { pageOpenGraph, serviceJsonLd } from "@/lib/seo";
 
 import Breadcrumb from "@/components/Breadcrumb";
+import JsonLd from "@/components/JsonLd";
 import FAQ from "@/components/FAQ";
 import RelatedContent from "@/components/RelatedContent";
 import SectionBanner from "@/components/SectionBanner";
@@ -53,6 +54,15 @@ export default function CharpentePage() {
 
   return (
     <>
+      <JsonLd
+        data={serviceJsonLd({
+          name: "Travaux de charpente",
+          description:
+            "Travaux de charpente à Perpignan et dans les Pyrénées-Orientales : rénovation, réparation et renforcement de la structure de toiture.",
+          path: "/charpente",
+          serviceType: "Charpente",
+        })}
+      />
       {/* HERO */}
       <SectionBanner
         title="Travaux de charpente à Perpignan"

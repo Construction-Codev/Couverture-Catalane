@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { articles } from "@/data/articles";
 import realisations from "@/data/realisations.json";
 
-const BASE_URL = "https://www.couverture-catalane.fr";
+import { SITE_URL as BASE_URL } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [

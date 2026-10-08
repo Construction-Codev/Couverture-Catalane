@@ -144,6 +144,7 @@ export const articles: Article[] = [
   {
   slug: "fuite-toiture-comment-trouver-origine",
   title: "Fuite de toiture : comment trouver l’origine et que faire ?",
+  seoTitle: "Fuite de toiture : comment trouver l’origine ?",
   description:
     "Tache au plafond, gouttes dans les combles ou infiltration après la pluie : comprendre l’origine possible d’une fuite de toiture et savoir comment réagir.",
   category: "Fuite de toiture",
@@ -265,6 +266,7 @@ export const articles: Article[] = [
 {
   slug: "quand-demousser-toiture",
   title: "Quand faut-il démousser une toiture et comment savoir si elle en a besoin ?",
+  seoTitle: "Quand faut-il démousser sa toiture ?",
   description:
     "Mousses, lichens et salissures : découvrez quand envisager le démoussage d’une toiture, les signes à observer et les précautions à prendre.",
   category: "Entretien toiture",
@@ -376,6 +378,7 @@ export const articles: Article[] = [
 {
   slug: "hydrofuge-toiture-utilite-quand-appliquer",
   title: "Hydrofuge de toiture : à quoi sert-il et quand l’appliquer ?",
+  seoTitle: "Hydrofuge de toiture : utilité et quand l’appliquer",
   description:
     "Comprendre le rôle d’un traitement hydrofuge de toiture, ses limites et les situations dans lesquelles son application peut être envisagée.",
   category: "Entretien toiture",
@@ -481,6 +484,7 @@ export const articles: Article[] = [
 {
   slug: "reparer-ou-refaire-toiture-comment-decider",
   title: "Réparer ou refaire une toiture : comment savoir quels travaux sont nécessaires ?",
+  seoTitle: "Réparer ou refaire sa toiture : comment décider ?",
   description:
     "Quelques tuiles à remplacer ou une réfection plus importante ? Les critères à examiner avant de décider quels travaux réaliser sur une toiture.",
   category: "Réfection toiture",
@@ -598,6 +602,7 @@ export const articles: Article[] = [
 {
   slug: "tuiles-cassees-deplacees-envolees-que-faire",
   title: "Tuiles cassées, déplacées ou envolées : quels risques et que faire ?",
+  seoTitle: "Tuiles cassées ou envolées : risques et que faire ?",
   description:
     "Une ou plusieurs tuiles sont cassées, déplacées ou tombées après du vent ? Comprendre les risques et savoir quand une réparation de toiture est nécessaire.",
   category: "Réparation toiture",
