@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { track } from "@vercel/analytics";
+import { trackPhoneClick, trackQuoteClick } from "@/lib/conversions";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -56,17 +56,8 @@ export default function Header() {
     setServicesOpen(false);
   };
 
-  const trackPhone = (source: string) => {
-  track("clic_telephone", {
-    source,
-  });
-};
-
-const trackQuote = (source: string) => {
-  track("clic_devis", {
-    source,
-  });
-};
+  const trackPhone = trackPhoneClick;
+  const trackQuote = trackQuoteClick;
 
   /*
    * Fermeture du dropdown desktop :

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FileText, Phone } from "lucide-react";
-import { track } from "@vercel/analytics";
+import { trackPhoneClick, trackQuoteClick } from "@/lib/conversions";
 
 export default function MobileCTA() {
   const pathname = usePathname();
@@ -33,15 +33,11 @@ export default function MobileCTA() {
   }, []);
 
   const handlePhoneClick = () => {
-    track("clic_telephone", {
-      source: "mobile_cta",
-    });
+    trackPhoneClick("mobile_cta");
   };
 
   const handleQuoteClick = () => {
-    track("clic_devis", {
-      source: "mobile_cta",
-    });
+    trackQuoteClick("mobile_cta");
   };
 
   return (
@@ -102,9 +98,7 @@ export default function MobileCTA() {
           <a
             href="#formulaire-devis"
             onClick={() => {
-              track("clic_devis", {
-                source: "mobile_cta_contact",
-              });
+              trackQuoteClick("mobile_cta_contact");
             }}
             className="
               inline-flex

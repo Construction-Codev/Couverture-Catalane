@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { track } from "@vercel/analytics";
+import { trackPhoneClick, trackQuoteClick } from "@/lib/conversions";
 import type { ReactNode } from "react";
 
 type BaseProps = {
@@ -32,9 +32,7 @@ export function TrackedPhone({
       aria-label={ariaLabel}
       className={className}
       onClick={() => {
-        track("clic_telephone", {
-          source,
-        });
+        trackPhoneClick(source);
       }}
     >
       {children}
@@ -55,9 +53,7 @@ export function TrackedQuote({
       aria-label={ariaLabel}
       className={className}
       onClick={() => {
-        track("clic_devis", {
-          source,
-        });
+        trackQuoteClick(source);
       }}
     >
       {children}

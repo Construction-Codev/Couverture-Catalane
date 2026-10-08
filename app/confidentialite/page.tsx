@@ -84,6 +84,10 @@ const sections = [
         Aucune information saisie dans les champs du formulaire — nom, e-mail,
         téléphone ou message — n&apos;est volontairement envoyée dans les
         événements de mesure d&apos;audience configurés sur ce site.
+        Le site intègre également la balise Google Ads afin de mesurer
+        l&apos;efficacité des annonces (appels et demandes de devis). Elle
+        fonctionne par défaut sans cookie publicitaire, en mode de
+        consentement refusé.
       </>
     ),
   },

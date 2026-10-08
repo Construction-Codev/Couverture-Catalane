@@ -1,8 +1,8 @@
 "use client";
 
-import { track } from "@vercel/analytics";
 
 import { TrackedPhone } from "@/components/TrackedCTA";
+import { trackFormSuccess } from "@/lib/conversions";
 
 import {
   AlertCircle,
@@ -157,9 +157,7 @@ export default function Contact() {
 
       setSuccess(true);
 
-      track("devis_envoye", {
-        source: "contact",
-      });
+      trackFormSuccess("contact");
 
       setFormData(initialFormData);
     } catch {

@@ -6,6 +6,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MobileCTA from "@/components/MobileCTA";
+import GoogleAdsTag from "@/components/GoogleAdsTag";
 import JsonLd from "@/components/JsonLd";
 import { DEFAULT_OG_IMAGE, SITE_URL } from "@/lib/seo";
 import realisations from "@/data/realisations.json";
@@ -136,6 +137,7 @@ export default function RootLayout({
 
         <Analytics />
         <SpeedInsights />
+        <GoogleAdsTag />
       </body>
     </html>
   );
