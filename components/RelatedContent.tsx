@@ -3,32 +3,11 @@ import { ArrowRight, BookOpen, MapPin } from "lucide-react";
 
 import { articles } from "@/data/articles";
 import realisationsData from "@/data/realisations.json";
+import { articlesByService } from "@/lib/maillage";
+import { inCity } from "@/lib/seo";
 import type { Realisation } from "@/types/realisation";
 
 const realisations = realisationsData as Realisation[];
-
-/**
- * Articles conseils liés à chaque page service (maillage interne).
- */
-const articlesByService: Record<string, string[]> = {
-  "/couverture": [
-    "reparer-ou-refaire-toiture-comment-decider",
-    "tuiles-cassees-deplacees-envolees-que-faire",
-  ],
-  "/reparations": [
-    "tuiles-cassees-deplacees-envolees-que-faire",
-    "toiture-endommagee-apres-tempete-que-faire",
-    "reparer-ou-refaire-toiture-comment-decider",
-  ],
-  "/fuites": [
-    "fuite-toiture-comment-trouver-origine",
-    "toiture-endommagee-apres-tempete-que-faire",
-  ],
-  "/nettoyage": [
-    "quand-demousser-toiture",
-    "hydrofuge-toiture-utilite-quand-appliquer",
-  ],
-};
 
 type RelatedContentProps = {
   service: string;
@@ -39,9 +18,20 @@ export default function RelatedContent({
   service,
   serviceName,
 }: RelatedContentProps) {
-  const relatedProjects = realisations
-    .filter((item) => item.service === service)
-    .slice(0, 3);
+  const serviceProjects = realisations.filter(
+    (item) => item.service === service
+  );
+
+  const relatedProjects = serviceProjects.slice(0, 3);
+
+  // "à Perpignan, à Cabestany et au Barcarès"
+  const cities = Array.from(
+    new Set(serviceProjects.map((item) => inCity(item.city)))
+  );
+  const citiesText =
+    cities.length > 1
+      ? `${cities.slice(0, -1).join(", ")} et ${cities[cities.length - 1]}`
+      : cities[0];
 
   const relatedArticles = (articlesByService[service] ?? [])
     .map((slug) => articles.find((article) => article.slug === slug))
@@ -67,6 +57,13 @@ export default function RelatedContent({
         >
           {serviceName} : chantiers et conseils
         </h2>
+
+        {citiesText && (
+          <p className="mt-5 max-w-3xl text-lg leading-relaxed text-slate-600">
+            Couverture Catalane est notamment intervenu {citiesText} pour ce
+            type de travaux.
+          </p>
+        )}
 
         <div className="mt-10 grid gap-10 lg:grid-cols-2">
           {relatedProjects.length > 0 && (

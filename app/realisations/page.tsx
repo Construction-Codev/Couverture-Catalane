@@ -11,14 +11,14 @@ import type { Realisation } from "@/types/realisation";
 const realisations = realisationsData as Realisation[];
 
 export const metadata: Metadata = {
-  title: "Nos réalisations",
+  title: "Réalisations de toiture dans le 66",
   description:
-    "Découvrez les réalisations de Couverture Catalane en couverture, réparation, zinguerie, nettoyage de toiture et charpente dans les Pyrénées-Orientales.",
+    "Chantiers de Couverture Catalane à Perpignan, Pia, Cabestany, Canet-en-Roussillon, Argelès-sur-Mer et dans le 66 : réparation, réfection, zinguerie, démoussage.",
   alternates: {
     canonical: "/realisations",
   },
   openGraph: pageOpenGraph({
-    title: "Nos réalisations | Couverture Catalane",
+    title: "Réalisations de toiture dans le 66 | Couverture Catalane",
     description:
       "Chantiers de couverture, réparation, zinguerie, nettoyage de toiture et charpente réalisés dans les Pyrénées-Orientales.",
     url: "/realisations",

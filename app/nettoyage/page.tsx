@@ -67,7 +67,7 @@ export default function NettoyagePage() {
       />
       {/* HERO */}
       <SectionBanner
-        title="Nettoyage et hydrofuge de toiture à Perpignan"
+        title="Nettoyage et entretien de toiture à Perpignan"
         subtitle="Nettoyage, démoussage et traitement hydrofuge dans les Pyrénées-Orientales"
         backgroundImage="/nettoyage2.jpg"
         imageAlt="Nettoyage et entretien d'une toiture"
