@@ -207,7 +207,7 @@ setFormData(initialFormData);
                   </span>
 
                   <span>
-                    <span className="block text-xs font-black uppercase tracking-[0.12em] text-slate-400">
+                    <span className="block text-xs font-black uppercase tracking-[0.12em] text-slate-600">
                       Téléphone
                     </span>
 
@@ -227,7 +227,7 @@ setFormData(initialFormData);
                   </span>
 
                   <span className="min-w-0">
-                    <span className="block text-xs font-black uppercase tracking-[0.12em] text-slate-400">
+                    <span className="block text-xs font-black uppercase tracking-[0.12em] text-slate-600">
                       E-mail
                     </span>
 
@@ -244,7 +244,7 @@ setFormData(initialFormData);
                   </span>
 
                   <span>
-                    <span className="block text-xs font-black uppercase tracking-[0.12em] text-slate-400">
+                    <span className="block text-xs font-black uppercase tracking-[0.12em] text-slate-600">
                       Zone d&apos;intervention
                     </span>
 

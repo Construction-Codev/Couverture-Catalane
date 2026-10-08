@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+
+import { pageOpenGraph } from "@/lib/seo";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -24,13 +26,13 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/a-propos",
   },
-  openGraph: {
+  openGraph: pageOpenGraph({
     title: "À propos de Couverture Catalane",
     description:
       "Couverture Catalane intervient à Perpignan et dans les Pyrénées-Orientales pour vos travaux de couverture, réparation, fuite, zinguerie, nettoyage et charpente.",
     url: "/a-propos",
     type: "website",
-  },
+  }),
   twitter: {
     card: "summary_large_image",
     title: "À propos de Couverture Catalane",

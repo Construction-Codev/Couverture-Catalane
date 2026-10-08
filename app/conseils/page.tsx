@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+
+import { pageOpenGraph } from "@/lib/seo";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -17,6 +19,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/conseils",
   },
+  openGraph: pageOpenGraph({
+    title: "Conseils toiture à Perpignan | Couverture Catalane",
+    description:
+      "Conseils pratiques sur l’entretien, la réparation et la rénovation de toiture : fuites, tuiles, démoussage, hydrofuge et dégâts après intempéries.",
+    url: "/conseils",
+  }),
 };
 
 export default function ConseilsPage() {

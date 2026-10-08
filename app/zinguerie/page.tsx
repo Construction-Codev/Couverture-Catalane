@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 
+import { pageOpenGraph } from "@/lib/seo";
+
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQ from "@/components/FAQ";
+import RelatedContent from "@/components/RelatedContent";
 import SectionBanner from "@/components/SectionBanner";
 import ServiceContent from "@/components/ServiceContent";
 import ServiceGallery from "@/components/ServiceGallery";
@@ -16,13 +19,13 @@ export const metadata: Metadata = {
     canonical: "/zinguerie",
   },
 
-  openGraph: {
+  openGraph: pageOpenGraph({
     title: "Zinguerie et gouttières à Perpignan | Couverture Catalane",
     description:
       "Travaux de zinguerie, gouttières et évacuation des eaux pluviales à Perpignan et dans les Pyrénées-Orientales.",
     url: "/zinguerie",
     type: "website",
-  },
+  }),
 
   twitter: {
     card: "summary_large_image",
@@ -35,15 +38,15 @@ export const metadata: Metadata = {
 export default function ZingueriePage() {
   const images = [
     {
-      image: "/zinguerie2.png",
+      image: "/zinguerie2.jpg",
       alt: "Travaux sur une gouttière de toiture",
     },
     {
-      image: "/zinguerie.png",
+      image: "/zinguerie.jpg",
       alt: "Éléments de zinguerie sur une toiture",
     },
     {
-      image: "/zinguerie3.png",
+      image: "/zinguerie3.jpg",
       alt: "Intervention sur une gouttière",
     },
   ];
@@ -53,7 +56,7 @@ export default function ZingueriePage() {
       <SectionBanner
         title="Zinguerie et gouttières à Perpignan"
         subtitle="Travaux liés à l'étanchéité et à l'évacuation des eaux pluviales dans les Pyrénées-Orientales"
-        backgroundImage="/zinguerie.png"
+        backgroundImage="/zinguerie.jpg"
         imageAlt="Travaux de zinguerie et gouttière sur une toiture"
       />
 
@@ -209,6 +212,8 @@ export default function ZingueriePage() {
           },
         ]}
       />
+
+      <RelatedContent service="/zinguerie" serviceName="Zinguerie" />
 
       <FAQ
         title="Questions fréquentes sur la zinguerie et les gouttières"

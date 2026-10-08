@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, MapPin } from "lucide-react";
 
 import Breadcrumb from "@/components/Breadcrumb";
+import { pageOpenGraph } from "@/lib/seo";
 import realisations from "@/data/realisations.json";
 
 type Props = {
@@ -38,6 +39,21 @@ export async function generateMetadata({
     alternates: {
       canonical: `/realisations/${project.slug}`,
     },
+    openGraph: pageOpenGraph({
+      title: `${project.title} à ${project.city} | Couverture Catalane`,
+      description: project.summary,
+      url: `/realisations/${project.slug}`,
+      ...(project.image
+        ? {
+            images: [
+              {
+                url: project.image,
+                alt: `${project.title} à ${project.city}`,
+              },
+            ],
+          }
+        : {}),
+    }),
   };
 }
 

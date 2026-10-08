@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 
+import { pageOpenGraph } from "@/lib/seo";
+
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQ from "@/components/FAQ";
+import RelatedContent from "@/components/RelatedContent";
 import SectionBanner from "@/components/SectionBanner";
 import ServiceContent from "@/components/ServiceContent";
 import ServiceGallery from "@/components/ServiceGallery";
@@ -16,14 +19,14 @@ export const metadata: Metadata = {
     canonical: "/nettoyage",
   },
 
-  openGraph: {
+  openGraph: pageOpenGraph({
     title:
       "Nettoyage & hydrofuge toiture à Perpignan | Couverture Catalane",
     description:
       "Nettoyage, démoussage et traitement hydrofuge de toiture à Perpignan et dans les Pyrénées-Orientales.",
     url: "/nettoyage",
     type: "website",
-  },
+  }),
 
   twitter: {
     card: "summary_large_image",
@@ -37,15 +40,15 @@ export const metadata: Metadata = {
 export default function NettoyagePage() {
   const images = [
     {
-      image: "/nettoyage.png",
+      image: "/nettoyage.jpg",
       alt: "Nettoyage d'une toiture",
     },
     {
-      image: "/nettoyage2.png",
+      image: "/nettoyage2.jpg",
       alt: "Démoussage et entretien d'une toiture",
     },
     {
-      image: "/nettoyage3.png",
+      image: "/nettoyage3.jpg",
       alt: "Toiture après une opération de nettoyage",
     },
   ];
@@ -56,7 +59,7 @@ export default function NettoyagePage() {
       <SectionBanner
         title="Nettoyage et hydrofuge de toiture à Perpignan"
         subtitle="Nettoyage, démoussage et traitement hydrofuge dans les Pyrénées-Orientales"
-        backgroundImage="/nettoyage2.png"
+        backgroundImage="/nettoyage2.jpg"
         imageAlt="Nettoyage et entretien d'une toiture"
       />
 
@@ -304,6 +307,8 @@ export default function NettoyagePage() {
       />
 
       {/* FAQ */}
+      <RelatedContent service="/nettoyage" serviceName="Nettoyage de toiture" />
+
       <FAQ
         title="Questions fréquentes sur le nettoyage et l'hydrofuge de toiture"
         intro="Quelques informations utiles avant un nettoyage, un démoussage ou un traitement hydrofuge de toiture."

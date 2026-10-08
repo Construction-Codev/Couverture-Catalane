@@ -13,7 +13,7 @@ export default function Banner() {
     <section className="relative isolate flex min-h-[720px] w-full items-center overflow-hidden bg-slate-950 lg:min-h-[780px]">
       {/* Image principale */}
       <Image
-        src="/hero-couvreur-perpignan.png"
+        src="/hero-couvreur-perpignan.jpg"
         alt="Travaux de couverture à Perpignan dans les Pyrénées-Orientales"
         fill
         priority

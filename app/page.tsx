@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
 
+import { pageOpenGraph } from "@/lib/seo";
+
 import Banner from "@/components/Banner";
 import Services from "@/components/Services";
 import LocalExpertise from "@/components/LocalExpertise";
 import HomeFAQ from "@/components/HomeFAQ";
 
 export const metadata: Metadata = {
-  title: "Couvreur à Perpignan",
+  title: {
+    absolute: "Couvreur à Perpignan et dans le 66 | Couverture Catalane",
+  },
 
   description:
     "Couverture Catalane réalise vos travaux de couverture, réparation de toiture, zinguerie, charpente et nettoyage à Perpignan et dans les Pyrénées-Orientales.",
@@ -15,13 +19,13 @@ export const metadata: Metadata = {
     canonical: "/",
   },
 
-  openGraph: {
+  openGraph: pageOpenGraph({
     title: "Couvreur à Perpignan | Couverture Catalane",
     description:
       "Travaux de couverture, réparation de toiture, zinguerie, charpente et nettoyage à Perpignan et dans les Pyrénées-Orientales.",
     url: "/",
     type: "website",
-  },
+  }),
 
   twitter: {
     card: "summary_large_image",

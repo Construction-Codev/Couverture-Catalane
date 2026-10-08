@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 
+import { pageOpenGraph } from "@/lib/seo";
+
 import Breadcrumb from "@/components/Breadcrumb";
 import RealisationGrid from "@/components/RealisationGrid";
 
@@ -15,6 +17,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/realisations",
   },
+  openGraph: pageOpenGraph({
+    title: "Nos réalisations | Couverture Catalane",
+    description:
+      "Chantiers de couverture, réparation, zinguerie, nettoyage de toiture et charpente réalisés dans les Pyrénées-Orientales.",
+    url: "/realisations",
+  }),
 };
 
 export default function RealisationsPage() {

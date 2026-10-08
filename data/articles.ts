@@ -9,7 +9,7 @@ export const articles: Article[] = [
     category: "Urgence toiture",
     publishedAt: "2026-09-19",
     readingTime: "7 min",
-    image: "/articles/tuiles.png",
+    image: "/articles/tuiles.jpg",
     intro: [
       "Après une tempête ou un épisode de vent violent, les dégâts sur une toiture ne sont pas toujours immédiatement visibles. Quelques tuiles peuvent avoir été déplacées, un élément de zinguerie peut avoir souffert ou une infiltration peut apparaître plusieurs heures plus tard.",
       "Dans les Pyrénées-Orientales, où les épisodes venteux peuvent être importants, savoir comment réagir permet surtout d’éviter qu’un dommage localisé ne provoque des infiltrations plus importantes.",
@@ -149,7 +149,7 @@ export const articles: Article[] = [
   category: "Fuite de toiture",
   publishedAt: "2026-09-19",
   readingTime: "8 min",
-  image: "/articles/fuites.png",
+  image: "/articles/fuites.jpg",
   intro: [
     "Une tache d’humidité au plafond ne signifie pas forcément que la fuite se trouve juste au-dessus. Sur une toiture, l’eau peut pénétrer à un endroit puis circuler le long d’un élément de charpente ou d’une autre partie du bâtiment avant de devenir visible plusieurs mètres plus loin.",
     "C’est ce qui rend certaines infiltrations difficiles à comprendre. Remplacer une tuile située approximativement au-dessus d’une auréole ne suffit pas toujours : il faut rechercher le chemin emprunté par l’eau et identifier son véritable point d’entrée.",
@@ -270,7 +270,7 @@ export const articles: Article[] = [
   category: "Entretien toiture",
   publishedAt: "2026-09-19",
   readingTime: "8 min",
-  image: "/articles/demoussage.png",
+  image: "/articles/demoussage.jpg",
   intro: [
     "La présence de quelques traces vertes sur une toiture ne signifie pas nécessairement qu’il faut intervenir immédiatement. À l’inverse, attendre que la couverture soit fortement colonisée avant de s’en préoccuper n’est pas toujours souhaitable.",
     "Le besoin de nettoyage dépend notamment de l’environnement de la maison, de l’exposition de la toiture, de son matériau et de son état. Deux maisons voisines peuvent donc présenter des niveaux d’encrassement très différents.",
@@ -381,7 +381,7 @@ export const articles: Article[] = [
   category: "Entretien toiture",
   publishedAt: "2026-09-19",
   readingTime: "7 min",
-  image: "/articles/hydrofuge.png",
+  image: "/articles/hydrofuge.jpg",
   intro: [
     "L’hydrofuge est souvent présenté comme une solution capable de rendre une toiture « comme neuve ». Cette formulation est trompeuse : un traitement hydrofuge ne remplace ni une tuile cassée, ni une réparation de fuite, ni une réfection nécessaire.",
     "Son rôle est différent. Lorsqu’il est adapté au support et appliqué sur une couverture en état compatible avec le traitement, il intervient dans une démarche d’entretien de la toiture.",
@@ -486,7 +486,7 @@ export const articles: Article[] = [
   category: "Réfection toiture",
   publishedAt: "2026-09-19",
   readingTime: "9 min",
-  image: "/articles/reparer.png",
+  image: "/articles/reparer.jpg",
   intro: [
     "Lorsqu’une toiture commence à présenter des problèmes, une question revient rapidement : faut-il simplement réparer la zone concernée ou envisager une réfection plus importante ?",
     "Il n’existe pas de réponse valable uniquement à partir de l’âge du bâtiment. Deux toitures du même âge peuvent être dans des états très différents selon leur matériau, leur entretien, leur exposition et les travaux déjà réalisés.",
@@ -603,7 +603,7 @@ export const articles: Article[] = [
   category: "Réparation toiture",
   publishedAt: "2026-09-19",
   readingTime: "7 min",
-  image: "/articles/casser.png",
+  image: "/articles/casser.jpg",
   intro: [
     "Une tuile au sol après un épisode venteux est un signe évident. Une tuile simplement déplacée est beaucoup plus difficile à repérer depuis le jardin. Dans les deux cas, une partie de la couverture peut ne plus remplir correctement son rôle.",
     "Cela ne signifie pas pour autant que toute la toiture doit être refaite. Lorsque le dommage est limité et que le reste de la couverture est en état, une intervention localisée peut être envisageable.",

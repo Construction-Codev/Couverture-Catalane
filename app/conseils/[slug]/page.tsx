@@ -52,6 +52,8 @@ export async function generateMetadata({
 
     openGraph: {
       type: "article",
+      locale: "fr_FR",
+      siteName: "Couverture Catalane",
       title: article.title,
       description: article.description,
       url: canonical,

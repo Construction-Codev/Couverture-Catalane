@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 
+import { pageOpenGraph } from "@/lib/seo";
+
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQ from "@/components/FAQ";
+import RelatedContent from "@/components/RelatedContent";
 import SectionBanner from "@/components/SectionBanner";
 import ServiceContent from "@/components/ServiceContent";
 import ServiceGallery from "@/components/ServiceGallery";
@@ -16,13 +19,13 @@ export const metadata: Metadata = {
     canonical: "/reparations",
   },
 
-  openGraph: {
+  openGraph: pageOpenGraph({
     title: "Réparation de toiture à Perpignan | Couverture Catalane",
     description:
       "Travaux de réparation et remise en état de toiture à Perpignan et dans les Pyrénées-Orientales.",
     url: "/reparations",
     type: "website",
-  },
+  }),
 
   twitter: {
     card: "summary_large_image",
@@ -35,15 +38,15 @@ export const metadata: Metadata = {
 export default function ReparationsPage() {
   const images = [
     {
-      image: "/reparations2.png",
+      image: "/reparations2.jpg",
       alt: "Travaux de réparation sur une toiture",
     },
     {
-      image: "/reparations.png",
+      image: "/reparations.jpg",
       alt: "Remise en état d'une couverture de toiture",
     },
     {
-      image: "/reparations3.png",
+      image: "/reparations3.jpg",
       alt: "Intervention sur des éléments de toiture endommagés",
     },
   ];
@@ -53,7 +56,7 @@ export default function ReparationsPage() {
       <SectionBanner
         title="Réparation de toiture à Perpignan"
         subtitle="Remise en état des tuiles et éléments de toiture endommagés dans les Pyrénées-Orientales"
-        backgroundImage="/reparations.png"
+        backgroundImage="/reparations.jpg"
         imageAlt="Travaux de réparation d'une toiture"
       />
 
@@ -208,6 +211,8 @@ export default function ReparationsPage() {
           },
         ]}
       />
+
+      <RelatedContent service="/reparations" serviceName="Réparation de toiture" />
 
       <FAQ
         title="Questions fréquentes sur la réparation de toiture"

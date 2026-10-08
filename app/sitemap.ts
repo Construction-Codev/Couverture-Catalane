@@ -25,11 +25,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const articlePages: MetadataRoute.Sitemap = articles.map((article) => ({
     url: `${BASE_URL}/conseils/${article.slug}`,
+    lastModified: article.updatedAt || article.publishedAt,
   }));
 
   const realisationPages: MetadataRoute.Sitemap = realisations.map(
     (realisation) => ({
       url: `${BASE_URL}/realisations/${realisation.slug}`,
+      ...(realisation.date ? { lastModified: realisation.date } : {}),
     })
   );
 
