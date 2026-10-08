@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 
 import Breadcrumb from "@/components/Breadcrumb";
+import { TrackedPhone } from "@/components/TrackedCTA";
 
 export const metadata: Metadata = {
   title: "Mentions légales",
@@ -103,12 +104,13 @@ export default function MentionsLegalesPage() {
 
                   <p>
                     Téléphone :{" "}
-                    <a
-                      href="tel:+33662125611"
+                    <TrackedPhone
+                      phone="+33662125611"
+                      source="mentions_legales"
                       className="font-bold text-orange-600 hover:underline"
                     >
                       06 62 12 56 11
-                    </a>
+                    </TrackedPhone>
                   </p>
 
                   <p>

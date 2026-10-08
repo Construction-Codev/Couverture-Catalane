@@ -9,7 +9,7 @@ import {
   onConsentChange,
   readConsent,
 } from "@/lib/consent";
-import { GOOGLE_ADS_ID } from "@/lib/conversions";
+import { GOOGLE_ADS_IDS } from "@/lib/conversions";
 
 const DENIED = {
   ad_storage: "denied",
@@ -44,7 +44,10 @@ function initGtag() {
   window.gtag("set", "ads_data_redaction", true);
   window.gtag("consent", "update", GRANTED);
   window.gtag("js", new Date());
-  window.gtag("config", GOOGLE_ADS_ID);
+  // Les deux comptes Google Ads partagent la même balise gtag.js.
+  for (const id of GOOGLE_ADS_IDS) {
+    window.gtag("config", id);
+  }
 }
 
 /*
@@ -86,7 +89,7 @@ export default function GoogleAdsTag() {
   return (
     <Script
       id="google-ads-gtag"
-      src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
+      src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_IDS[0]}`}
       strategy="afterInteractive"
     />
   );

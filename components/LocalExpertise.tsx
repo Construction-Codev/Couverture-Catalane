@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ArrowRight, MapPin, Phone } from "lucide-react";
 
+import { TrackedPhone } from "@/components/TrackedCTA";
+
 export default function LocalExpertise() {
   return (
     <section
@@ -53,14 +55,15 @@ export default function LocalExpertise() {
               <ArrowRight size={18} aria-hidden="true" />
             </Link>
 
-            <a
-              href="tel:+33662125611"
+            <TrackedPhone
+              phone="+33662125611"
+              source="local_expertise"
               className="inline-flex min-h-14 items-center justify-center gap-2 rounded-full border border-slate-300 bg-white px-7 py-4 font-extrabold text-slate-900 transition hover:bg-slate-50"
-              aria-label="Appeler Couverture Catalane au 06 62 12 56 11"
+              ariaLabel="Appeler Couverture Catalane au 06 62 12 56 11"
             >
               <Phone size={18} aria-hidden="true" />
               06 62 12 56 11
-            </a>
+            </TrackedPhone>
           </div>
         </div>
 
