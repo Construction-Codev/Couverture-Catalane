@@ -653,6 +653,9 @@ export async function POST(req: Request) {
       {
         message: "Votre demande a bien été envoyée.",
         id: data?.id,
+        // Seule une demande réellement transmise est comptée comme
+        // conversion côté navigateur (pas les réponses anti-spam).
+        sent: true,
       },
       { status: 200 }
     );

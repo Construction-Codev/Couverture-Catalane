@@ -30,6 +30,8 @@ type FormData = {
 
 type ApiResponse = {
   message?: string;
+  id?: string;
+  sent?: boolean;
 };
 
 const initialFormData: FormData = {
@@ -157,7 +159,9 @@ export default function Contact() {
 
       setSuccess(true);
 
-      trackFormSuccess("contact");
+      if (data.sent === true) {
+        trackFormSuccess("contact", data.id);
+      }
 
       setFormData(initialFormData);
     } catch {
