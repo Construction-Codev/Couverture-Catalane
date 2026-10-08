@@ -1,5 +1,7 @@
 import { track } from "@vercel/analytics";
 
+import { hasAdsConsent } from "@/lib/consent";
+
 export const GOOGLE_ADS_ID = "AW-18366446985";
 
 /*
@@ -21,7 +23,9 @@ declare global {
 }
 
 function sendAdsConversion(label: string | undefined) {
-  if (!label || typeof window === "undefined" || !window.gtag) return;
+  // Conversion envoyée seulement si : libellé configuré, cookies
+  // publicitaires acceptés et balise Google Ads chargée.
+  if (!label || !hasAdsConsent() || !window.gtag) return;
 
   window.gtag("event", "conversion", {
     send_to: `${GOOGLE_ADS_ID}/${label}`,

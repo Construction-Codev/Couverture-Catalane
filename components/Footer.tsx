@@ -12,6 +12,7 @@ import {
   TrackedPhone,
   TrackedQuote,
 } from "@/components/TrackedCTA";
+import CookieSettingsButton from "@/components/CookieSettingsButton";
 
 const services = [
   { name: "Couverture", href: "/couverture" },
@@ -266,6 +267,7 @@ export default function Footer() {
                   {item.name}
                 </Link>
               ))}
+              <CookieSettingsButton className="cursor-pointer text-xs font-semibold text-slate-400 transition hover:text-orange-400" />
             </div>
 
             <a
