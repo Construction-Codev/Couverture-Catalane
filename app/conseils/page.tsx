@@ -199,7 +199,7 @@ export default function ConseilsPage() {
             <div className="mt-7 flex flex-wrap gap-3">
               <Link
                 href="/reparations"
-                className="rounded-xl bg-orange-500 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-orange-600"
+                className="rounded-xl bg-orange-600 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-orange-500"
               >
                 Réparations
               </Link>
@@ -258,7 +258,7 @@ export default function ConseilsPage() {
 
           <Link
             href="/contact"
-            className="mt-7 inline-flex items-center gap-2 rounded-xl bg-orange-500 px-6 py-3.5 text-sm font-bold text-white transition hover:bg-orange-600"
+            className="mt-7 inline-flex items-center gap-2 rounded-xl bg-orange-600 px-6 py-3.5 text-sm font-bold text-white transition hover:bg-orange-500"
           >
             Demander un devis
             <ArrowRight className="h-4 w-4" />

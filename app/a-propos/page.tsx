@@ -305,7 +305,7 @@ export default function AProposPage() {
 
             <TrackedQuote
               source="a_propos_bottom"
-              className="inline-flex min-h-14 items-center justify-center gap-3 rounded-full border border-white/30 bg-white/10 px-6 py-3 font-extrabold text-white transition hover:bg-white/20"
+              className="inline-flex min-h-14 items-center justify-center gap-3 rounded-full border border-white/40 px-6 py-3 font-extrabold text-white transition hover:bg-white/10"
             >
               <FileText size={20} aria-hidden="true" />
               Demander un devis

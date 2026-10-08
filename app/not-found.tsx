@@ -13,7 +13,7 @@ export default function NotFound() {
   return (
     <main className="min-h-[70vh] bg-white flex items-center justify-center px-6 py-20">
       <div className="mx-auto max-w-2xl text-center">
-        <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-orange-500">
+        <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-orange-600">
           Erreur 404
         </p>
 
@@ -30,7 +30,7 @@ export default function NotFound() {
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Link
             href="/"
-            className="inline-flex min-h-12 items-center justify-center rounded-xl bg-orange-500 px-6 py-3 font-semibold text-white transition hover:bg-orange-600"
+            className="inline-flex min-h-12 items-center justify-center rounded-xl bg-orange-600 px-6 py-3 font-semibold text-white transition hover:bg-orange-500"
           >
             Retour à l’accueil
           </Link>

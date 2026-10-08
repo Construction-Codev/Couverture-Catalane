@@ -17,6 +17,7 @@ export default function Banner() {
         alt="Travaux de couverture à Perpignan dans les Pyrénées-Orientales"
         fill
         priority
+        fetchPriority="high"
         sizes="100vw"
         quality={75}
         className="object-cover object-[65%_center] sm:object-center"

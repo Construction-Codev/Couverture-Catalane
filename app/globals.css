@@ -1,6 +1,12 @@
 @import "tailwindcss";
 
 @theme {
+  /*
+   * Orange principal assombri (#c2410c au lieu de #f54900) : texte blanc
+   * sur bouton et texte orange sur fond clair lisibles (contraste WCAG AA
+   * ≥ 4,5:1). Les teintes de survol (orange-500) restent inchangées.
+   */
+  --color-orange-600: #c2410c;
   --color-brand-orange: orangered;
   --color-brand-orange-hover: #ff3c00;
 }

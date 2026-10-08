@@ -70,7 +70,7 @@ export default function RealisationGrid({
               aria-pressed={active}
               className={`rounded-full px-4 py-2 text-sm font-bold transition ${
                 active
-                  ? "bg-orange-500 text-white"
+                  ? "bg-orange-600 text-white"
                   : "border border-slate-200 bg-white text-slate-700 hover:border-orange-300 hover:text-orange-600"
               }`}
             >

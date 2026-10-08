@@ -215,6 +215,7 @@ export default async function ArticlePage({
                 alt={article.title}
                 fill
                 priority
+                fetchPriority="high"
                 sizes="(max-width: 896px) 100vw, 896px"
                 className="object-cover"
               />
