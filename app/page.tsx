@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
 
   description:
-    "Couvreur basé à Pia, Couverture Catalane intervient à Perpignan et dans le 66 : rénovation et réparation de toiture, fuites, zinguerie. Demandez votre devis.",
+    "Couvreur basé à Cabestany, Couverture Catalane intervient à Perpignan et dans le 66 : rénovation et réparation de toiture, fuites, zinguerie. Demandez votre devis.",
 
   alternates: {
     canonical: "/",
