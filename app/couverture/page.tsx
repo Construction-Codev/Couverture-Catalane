@@ -172,7 +172,7 @@ export default function CouverturePage() {
     {
       question: "Dans quel secteur intervenez-vous ?",
       answer:
-        "Couverture Catalane est basée à Pia et intervient à Perpignan ainsi que dans les Pyrénées-Orientales selon la nature et la localisation des travaux.",
+        "Couverture Catalane est basée à Cabestany et intervient à Perpignan ainsi que dans les Pyrénées-Orientales selon la nature et la localisation des travaux.",
     },
     {
       question: "Comment demander un devis pour ma toiture ?",
