@@ -20,9 +20,9 @@ import {
 } from "@/components/TrackedCTA";
 
 export const metadata: Metadata = {
-  title: "Entreprise de couverture à Pia, près de Perpignan",
+  title: "Entreprise de couverture à Cabestany, près de Perpignan",
   description:
-    "Découvrez Couverture Catalane, entreprise de couverture basée à Pia et intervenant à Perpignan et dans les Pyrénées-Orientales pour vos travaux de toiture.",
+    "Découvrez Couverture Catalane, entreprise de couverture basée à Cabestany et intervenant à Perpignan et dans les Pyrénées-Orientales pour vos travaux de toiture.",
   alternates: {
     canonical: "/a-propos",
   },
@@ -103,11 +103,11 @@ export default function AProposPage() {
               </p>
 
               <h1 className="mt-4 max-w-3xl text-4xl font-black tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
-                Une entreprise de couverture basée à Pia, près de Perpignan
+                Une entreprise de couverture basée à Cabestany, près de Perpignan
               </h1>
 
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-600">
-                Basée à Pia, Couverture Catalane intervient pour vos
+                Basée à Cabestany, Couverture Catalane intervient pour vos
                 travaux de toiture à Perpignan et dans les
                 Pyrénées-Orientales : couverture, réparation, recherche
                 de fuite, zinguerie, nettoyage, hydrofuge et charpente.
@@ -145,7 +145,7 @@ export default function AProposPage() {
               </p>
 
               <h2 className="mt-3 text-2xl font-black tracking-tight sm:text-3xl">
-                Basée à Pia, au cœur du 66
+                Basée à Cabestany, au cœur du 66
               </h2>
 
               <p className="mt-4 leading-relaxed text-slate-300">
