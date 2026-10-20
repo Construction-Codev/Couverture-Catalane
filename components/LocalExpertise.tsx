@@ -77,7 +77,7 @@ export default function LocalExpertise() {
           </h3>
 
           <p className="mt-4 leading-relaxed text-slate-300">
-            Couverture Catalane est basée à Pia et intervient pour des travaux
+            Couverture Catalane est basée à Cabestany et intervient pour des travaux
             de toiture à Perpignan et dans le département des
             Pyrénées-Orientales.
           </p>
