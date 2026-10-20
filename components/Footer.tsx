@@ -226,9 +226,9 @@ export default function Footer() {
                   </span>
 
                   <address className="mt-1 block text-sm font-extrabold not-italic leading-relaxed text-white">
-                    88 chemin des Charrettes
+                    5 Rue du Moulinas
                     <br />
-                    66380 Pia
+                    66330 Cabestany
                   </address>
 
                   <span className="mt-2 block text-xs font-semibold leading-relaxed text-slate-400">
