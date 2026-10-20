@@ -83,14 +83,14 @@ export default function MentionsLegalesPage() {
                   <p>
                     Entrepreneur :{" "}
                     <strong className="text-slate-950">
-                      Gregory Roblès
+                      ROBLES Grégory
                     </strong>
                   </p>
 
                   <p>
-                    88 chemin des Charrettes
+                    5 Rue du Moulinas
                     <br />
-                    66380 Pia
+                    66330 CABESTANY
                     <br />
                     France
                   </p>
@@ -140,7 +140,7 @@ export default function MentionsLegalesPage() {
                 </h2>
 
                 <p className="mt-4 leading-relaxed text-slate-600">
-                  Gregory Roblès
+                  ROBLES Grégory
                 </p>
 
                 <a
