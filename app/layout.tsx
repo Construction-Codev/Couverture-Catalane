@@ -84,9 +84,9 @@ const localBusinessJsonLd = {
 
   address: {
     "@type": "PostalAddress",
-    streetAddress: "88 chemin des Charrettes",
-    postalCode: "66380",
-    addressLocality: "Pia",
+    streetAddress: "5 Rue du Moulinas",
+    postalCode: "66330",
+    addressLocality: "Cabestany",
     addressRegion: "Pyrénées-Orientales",
     addressCountry: "FR",
   },
