@@ -15,7 +15,7 @@ const faqItems: FAQItem[] = [
   {
     question: "Intervenez-vous en dehors de Perpignan ?",
     answer:
-      "Oui. Couverture Catalane est basée à Pia et intervient à Perpignan ainsi que dans les Pyrénées-Orientales selon la nature et la localisation des travaux.",
+      "Oui. Couverture Catalane est basée à Cabestany et intervient à Perpignan ainsi que dans les Pyrénées-Orientales selon la nature et la localisation des travaux.",
   },
   {
     question: "Que faire en cas de fuite ou d'infiltration de toiture ?",
