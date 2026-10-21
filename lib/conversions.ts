@@ -3,18 +3,22 @@ import { track } from "@vercel/analytics";
 import { hasAdsConsent } from "@/lib/consent";
 
 /*
- * Actions de conversion Google Ads (Outils > Conversions > « Configurer
- * la balise » > envoi d'événement). Les deux actions appartiennent à deux
- * comptes Google Ads différents (identifiants AW- distincts) : chacune
- * n'est visible, et utilisable pour l'optimisation, que dans son compte.
+ * Actions de conversion Google Ads. Le compte Couverture Catalane utilise
+ * le suivi des conversions du compte administrateur Codev (AW-18366446985) :
+ * les deux actions doivent donc appartenir à ce compte, sinon elles ne sont
+ * ni comptées dans la campagne ni utilisées pour l'optimisation.
+ *  - « Lead par téléphone » (objectif Leads par téléphone)
+ *  - « Formulaire de devis (site) » (objectif Envois de formulaires de lead)
  */
 const ADS_PHONE_CONVERSION = "AW-18366446985/yGpHCMjW0docEIn75rVE";
-const ADS_FORM_CONVERSION = "AW-17906846752/-T76CKKf1JUdEKCY09pC";
+const ADS_FORM_CONVERSION = "AW-18366446985/TeJ3CJC44qQdEIn75rVE";
 
-/** Comptes à configurer dans gtag.js (une seule balise chargée pour les deux). */
+/** Comptes à configurer dans gtag.js (dédoublonnés : une seule balise). */
 export const GOOGLE_ADS_IDS = [
-  ADS_PHONE_CONVERSION.split("/")[0],
-  ADS_FORM_CONVERSION.split("/")[0],
+  ...new Set([
+    ADS_PHONE_CONVERSION.split("/")[0],
+    ADS_FORM_CONVERSION.split("/")[0],
+  ]),
 ];
 
 const PHONE_SENT_KEY = "cc-ads-phone-sent";
