@@ -2,6 +2,7 @@
 
 
 import { TrackedPhone } from "@/components/TrackedCTA";
+import Script from "next/script";
 import { trackFormSuccess } from "@/lib/conversions";
 
 import {
@@ -53,6 +54,8 @@ export default function Contact() {
   // du premier affichage, vérifiés côté serveur.
   const [website, setWebsite] = useState("");
   const startedAtRef = useRef(0);
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
   useEffect(() => {
     startedAtRef.current = Date.now();
@@ -121,6 +124,11 @@ export default function Contact() {
       return;
     }
 
+    if (turnstileSiteKey && !turnstileToken) {
+      setError("Vérification anti-spam en cours. Veuillez réessayer.");
+      return;
+    }
+
     setLoading(true);
 
     try {
@@ -135,6 +143,7 @@ export default function Contact() {
           phone: formData.phone.trim(),
           message: formData.message.trim(),
           website,
+          turnstileToken,
           elapsedMs: startedAtRef.current
             ? Date.now() - startedAtRef.current
             : 0,
@@ -316,6 +325,32 @@ export default function Contact() {
               </p>
             </div>
 
+            {turnstileSiteKey && (
+              <>
+                <Script
+                  src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
+                  strategy="afterInteractive"
+                  onReady={() => {
+                    const turnstile = (window as Window & {
+                      turnstile?: {
+                        render: (element: HTMLElement, options: Record<string, unknown>) => void;
+                      };
+                    }).turnstile;
+                    const element = document.getElementById("contact-turnstile");
+                    if (turnstile && element && !element.hasChildNodes()) {
+                      turnstile.render(element, {
+                        sitekey: turnstileSiteKey,
+                        appearance: "interaction-only",
+                        callback: (token: string) => setTurnstileToken(token),
+                        "expired-callback": () => setTurnstileToken(""),
+                        "error-callback": () => setTurnstileToken(""),
+                      });
+                    }
+                  }}
+                />
+                <div id="contact-turnstile" />
+              </>
+            )}
             <form
               onSubmit={handleSubmit}
               className="space-y-6"
