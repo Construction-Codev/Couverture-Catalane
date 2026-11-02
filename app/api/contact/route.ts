@@ -8,6 +8,7 @@ type ContactBody = {
   message?: unknown;
   website?: unknown;
   elapsedMs?: unknown;
+  turnstileToken?: unknown;
 };
 
 const MAX_BODY_LENGTH = 20_000;
@@ -142,6 +143,47 @@ export async function POST(req: Request) {
         { message: "Votre demande a bien été envoyée." },
         { status: 200 }
       );
+    }
+
+    // Turnstile is enforced whenever its server secret is configured.
+    // Never trust a client-side CAPTCHA result without Siteverify.
+    const turnstileSecret = process.env.TURNSTILE_SECRET_KEY;
+    if (turnstileSecret) {
+      if (typeof body.turnstileToken !== "string" || !body.turnstileToken) {
+        return NextResponse.json(
+          { message: "Veuillez réessayer l'envoi du formulaire." },
+          { status: 403 }
+        );
+      }
+
+      let verified = false;
+      try {
+        const verification = await fetch(
+          "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams({
+              secret: turnstileSecret,
+              response: body.turnstileToken,
+            }),
+            signal: AbortSignal.timeout(5000),
+            cache: "no-store",
+          }
+        );
+        if (verification.ok) {
+          const result = (await verification.json()) as { success?: boolean };
+          verified = result.success === true;
+        }
+      } catch {
+        console.error("Turnstile verification unavailable");
+      }
+      if (!verified) {
+        return NextResponse.json(
+          { message: "La vérification anti-spam a échoué. Veuillez réessayer." },
+          { status: 403 }
+        );
+      }
     }
 
     const name = body.name.trim().replace(/[\r\n]+/g, " ");
