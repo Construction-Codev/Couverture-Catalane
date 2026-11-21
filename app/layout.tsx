@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import MobileCTA from "@/components/MobileCTA";
 import CookieBanner from "@/components/CookieBanner";
 import GoogleAdsTag from "@/components/GoogleAdsTag";
+import GA4PageViews from "@/components/tracking/GA4PageViews";
 import JsonLd from "@/components/JsonLd";
 import { DEFAULT_OG_IMAGE, SITE_URL } from "@/lib/seo";
 import realisations from "@/data/realisations.json";
@@ -140,6 +141,7 @@ export default function RootLayout({
         <Analytics />
         <SpeedInsights />
         <GoogleAdsTag />
+        <GA4PageViews />
       </body>
     </html>
   );

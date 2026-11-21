@@ -10,6 +10,7 @@ import {
   readConsent,
 } from "@/lib/consent";
 import { GOOGLE_ADS_IDS } from "@/lib/conversions";
+import { GA4_MEASUREMENT_ID, setGA4Active } from "@/lib/ga4";
 
 const DENIED = {
   ad_storage: "denied",
@@ -48,6 +49,27 @@ function initGtag() {
   for (const id of GOOGLE_ADS_IDS) {
     window.gtag("config", id);
   }
+  // GA4 partage la même balise ; pages vues envoyées par GA4PageViews (navigation Next.js).
+  if (GA4_MEASUREMENT_ID) {
+    window.gtag("config", GA4_MEASUREMENT_ID, { send_page_view: false });
+  }
+}
+
+/** Supprime les cookies Google Analytics (_ga, _ga_*) lors d'un retrait du consentement. */
+function clearAnalyticsCookies() {
+  const names = document.cookie
+    .split(";")
+    .map((cookie) => cookie.split("=")[0]?.trim())
+    .filter((name): name is string => !!name && (name === "_ga" || name.startsWith("_ga_") || name === "_gid"));
+  const host = window.location.hostname;
+  const parts = host.split(".");
+  const domains = new Set(["", host, `.${host}`]);
+  if (parts.length >= 2) domains.add(`.${parts.slice(-2).join(".")}`);
+  for (const name of names) {
+    for (const domain of domains) {
+      document.cookie = `${name}=; Max-Age=0; path=/${domain ? `; domain=${domain}` : ""}`;
+    }
+  }
 }
 
 /*
@@ -66,6 +88,7 @@ export default function GoogleAdsTag() {
         } else {
           initGtag();
         }
+        setGA4Active(true);
         setLoad(true);
         return;
       }
@@ -75,7 +98,9 @@ export default function GoogleAdsTag() {
       if (window.gtag) {
         window.gtag("consent", "update", DENIED);
       }
+      setGA4Active(false);
       clearAdsCookies();
+      clearAnalyticsCookies();
     };
 
     const stored = readConsent();

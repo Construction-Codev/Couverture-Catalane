@@ -62,8 +62,9 @@ export default function CookieBanner() {
       "
     >
       <p className="text-xs leading-snug text-slate-200 sm:text-sm sm:leading-relaxed">
-        Avec votre accord, des cookies Google Ads mesurent l&apos;efficacité
-        de nos annonces. Refuser ne change rien à votre visite.{" "}
+        Avec votre accord, des cookies Google mesurent l&apos;audience du site
+        (Google Analytics) et l&apos;efficacité de nos annonces (Google Ads).
+        Refuser ne change rien à votre visite.{" "}
         <Link
           href="/confidentialite#cookies"
           className="font-bold text-orange-300 underline underline-offset-2 hover:text-orange-200"
